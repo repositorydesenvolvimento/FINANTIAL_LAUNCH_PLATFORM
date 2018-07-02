@@ -2,10 +2,23 @@ package plataformalancamentofinanceiro.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import plataformalancamentofinanceiro.enumeration.TipoAtivoInativoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoCanalPagamentoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoDespesaEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoFormaPagamentoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoSituacaoPagamentoEnumeration;
 
 /*
  * # Responsavel por estabelecer a gestao de Despesas Pessoais.
@@ -51,19 +64,217 @@ import javax.persistence.Table;
 @Table(name = "TB_DESPESA")
 public class GestaoDespesaDomain extends BaseDomain {
 
-	private static final long serialVersionUID = 1L;
-	
+	 private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue	
+	@GeneratedValue
+	@Column(name = "CODIGO")
 	private Long codigo;
 	
-	private GestaoPessoaDomain favorecido;
+	/**
+	 * Refere-se ao Favorecido, ou seja, a empresa em que e realizado uma
+	 * determinada compra.
+	 */
+	@OneToOne
+	@JoinColumn(name = "ID_PESSOA", referencedColumnName = "CODIGO", nullable = false)
+	private GestaoPessoaDomain gestaoPessoaDomain;
 	
-	private BigDecimal valorPagamento;
+	/**
+	 * Refere-se as categoria dos servicos dos produtos. Exemplo de Dominios:
+	 * Servicos de Telefonia Movel, Educacao Superior (Graduacao), Fatura de Cartao
+	 * de Credito, Textil, Perfumaria, Calcados, Alimentos, outros.
+	 */
+	@ManyToOne	
+	@JoinColumn(name = "ID_PRODUTO_SERVICO", referencedColumnName = "CODIGO", nullable = true)
+	private GestaoProdutoServicoDomain gestaoProdutoServicoDomain;
 	
-	private Date dataVencimento;
+	/**
+	 * Refere-se ao Favorecido, ou seja, a empresa em que e realizado uma
+	 * determinada compra.
+	 */
+	@OneToOne
+	@JoinColumn(name = "ID_CATEGORIA_PRODUTO", referencedColumnName = "CODIGO", nullable = false)
+	private GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain;
+	/**
+	 * Refere-se ao numero da Nota Fiscal emitida pelo estabelecimento no ato da
+	 * compra.
+	 */
 	
-	public GestaoDespesaDomain() {  }
+	@Column(name = "NUMERO_NOTA_FISCAL", nullable = true)
+	private String numeroNotaFiscal;
+	
+	/**
+	 * O valor desse campo e calculado pelo sistema. Refere-se ao Valor Previsto
+	 * Total das despesas para um determinado periodo (meses, anos).
+	 */
+	@Column(name = "VALOR_PREVISTO", nullable = true)
+	private BigDecimal valorPrevisto;
+	
+	/**
+	 * Refere-se ao Valor do Desconto dado por algumas empresas referente, por
+	 * exemplo, quando se paga uma conta dentro de um prazo determinado.
+	 */
+	@Column(name = "VALOR_DESCONTO", nullable = true)
+	private BigDecimal valorDesconto;
+	
+	/**
+	 * O valor desse campo e calculado pelo sistema. Refere-se ao Valor Total de
+	 * Juros e demais encargos em caso de atraso no pagamento.
+	 */
+	@Column(name = "VALOR_TOTAL_JUROS", nullable = true)
+	private BigDecimal valorTotalJuros;
+	
+	/**
+	 * Refere-se ao Valor do Item da Despesa.
+	 */
+	@Column(name = "VALOR_ITEM_DESPESA", nullable = true)
+	private BigDecimal valorItemDespesa;
+	
+	/**
+	 * O valor desse campo e calculado pelo sistema. Refere-se ao Valor Total de
+	 * todas as despesas de um determinado periodo.
+	 */
+	@Column(name = "VALOR_TOTAL_DESPESAS", nullable = true)
+	private BigDecimal valorTotalDespesa;
+	
+	/**
+	 * Refere-se ao Valor atualizado Total de despesas ja pagas em um determinado
+	 * perido.
+	 */
+	@Column(name = "VALOR_TOTAL_PAGO", nullable = true)
+	private BigDecimal valorTotalPago;
+	
+	/**
+	 * O valor desse campo e calculado pelo sistema. Refere-se ao Valor Restante
+	 * Atualizado de despesas a serem pagas em um determinado perido.
+	 */
+	@Column(name = "VALOR_RESTANTE", nullable = true)
+	private BigDecimal valorRestante;
+	
+	/**
+	 * O valor desse campo e calculado pelo sistema. Refere-se a Data de Cadastro de
+	 * uma determinada despesa no sistema.
+	 */
+	@Column(name = "DATA_CADASTRO_DESPESA", nullable = true)
+	private Date dataCadastroDespesa;
+	
+	/**
+	 * Refere-se a Data de Vencimento de uma determinada despesa no sistema.
+	 */
+	@Column(name = "DATA_VENCIMENTO_DESPESA", nullable = true)
+	private Date dataVencimentoDespesa;
+	
+	/**
+	 * Refere-se a Data de Termino do Pagamento de uma determinada despesa no
+	 * sistema considerando se o 'NUMERO_PARCELA' maior que zero, ou seja, devera
+	 * ser gravado a data das despesas para as quantidades de meses.
+	 */
+	@Column(name = "DATA_TERMINO_PAGAMENTO_DESPESA", nullable = true)
+	private Date dataTerminoPagamentoDespesa;
+	
+	/**
+	 * Refere-se a Data do Mes de Referencia da Despesa, ou seja, para selecionar a
+	 * despesa do mes de referecia (mes atual).
+	 */
+	@Column(name = "DATA_MES_RFERENCIA_DESPESA", nullable = true)
+	private Date dataMesReferenciaDespesa;
+	
+	/**
+	 * Refere-se a Data de Pagamento de uma determinada despesa no sistema.
+	 */
+	@Column(name = "DATA_PAGAMENTO_DESPESA", nullable = true)
+	private Date dataPagamentoDespesa;
+	
+	/**
+	 * Refere-se ao Tipo da Despesa, por exemplo, Despesas Fixas ou Despesas
+	 * Variaveis.
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_DESPESA", nullable = true)
+	private TipoDespesaEnumeration tipoDespesaEnumeration;
+	
+	/**
+	 * Refere-se a Instituicao Financeira (Bancos), ou seja, e a Fonte utilizada
+	 * para ser debitada o valor referente ao pagamento de uma determinada despesa.
+	 */
+	// @Deprecated
+	// @ManyToOne
+	// @JoinColumn(name = "ID_INSTITUICAO_FINANCEIRA", referencedColumnName =
+	// "CODIGO", nullable = true)
+	// private InstituicaoFinanceiraDomain instituicaoFinanceiraDomain;
+	
+	/**
+	 * Refere-se a Fonte do Pagamento, ou seja, de onde sera descontado o pagamento
+	 * de determinada despesa.
+	 */
+	@OneToOne
+	@JoinColumn(name = "ID_FONTE_PAGAMENTO", referencedColumnName = "CODIGO", nullable = false)
+	private GestaoPessoaDomain fontePagamentoPessoa;
+	
+	/**
+	 * Refere-se a Situacao de Pagamento de uma determinada Despesa.
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_SITUACAO_PAGAMENTO", nullable = true)
+	private TipoSituacaoPagamentoEnumeration tipoSituacaoPagamentoEnumeration;
+		
+	/**
+	 * Refere-se ao periodo, ou sejam, quantidade de meses, anos em que a despesa
+	 * levara para ser liquidada efetivamente.
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_PERIODO", nullable = true)
+	private TipoPeriodoEnumeration tipoPeriodoEnumeration;
+	
+	/**
+	 * Refere-se a Forma de Pagamento de uma determinada despesa.
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_FORMA_PAGAMENTO", nullable = true)
+	private TipoFormaPagamentoEnumeration tipoFormaPagamentoEnumeration;
+	
+	/**
+	 * Refere-se ao Canal de Pagamento de uma determinada despesa, ou seja, qual
+	 * meio o pagamento da despesa foi realizado.
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_CANAL_PAGAMENTO", nullable = true)
+	private TipoCanalPagamentoEnumeration tipoCanalPagamentoEnumeration;
+	
+	/**
+	 * Refere-se ao Numero de Parcelas que uma determinada Despesa devera ser
+	 * liquidada.
+	 */
+	@Column(name = "NUMERO_PARCELA", nullable = true)
+	private Integer numeroParcela;
+	
+	/**
+	 * Refere-se a Quantidade de produtos comprados.
+	 */
+	@Column(name = "QUANTIDADE_PRODUTO", nullable = true)
+	private Integer quantidadeProduto;
+	
+	/**
+	 * Refere-se a Quantidade de Parcelas utilizadas para o pagamento de uma despesa
+	 * variavel caso a Forma de Pagamento seja o Cartao de Credito.
+	 */
+	@Column(name = "QUANTIDADE_PARCELA", nullable = true)
+	private Integer quantidadeParcela;
+	
+	/**
+	 * Refere-se a Situacao da despesa para saber se e Ativa ou Inativa. As despesas
+	 * variaveis dever ser do tipo 'Inativo'.
+	 */
+	@Column(name = "TIPO_ATIVO_INATIVO", nullable = true)
+	private TipoAtivoInativoEnumeration tipoAtivoInativoEnumeration;
+	
+	/**
+	 * Refere-se a Observacaoes necessarias para determinadas despesa.
+	 */
+	@Column(name = "OBSERVACAO", nullable = true)
+	private String observacao;
+	
+	public GestaoDespesaDomain() {	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -73,28 +284,221 @@ public class GestaoDespesaDomain extends BaseDomain {
 		this.codigo = codigo;
 	}
 
-	public GestaoPessoaDomain getFavorecido() {
-		return favorecido;
+	public GestaoPessoaDomain getGestaoPessoaDomain() {
+		return gestaoPessoaDomain;
 	}
 
-	public void setFavorecido(GestaoPessoaDomain favorecido) {
-		this.favorecido = favorecido;
+	public void setGestaoPessoaDomain(GestaoPessoaDomain gestaoPessoaDomain) {
+		this.gestaoPessoaDomain = gestaoPessoaDomain;
 	}
 
-	public BigDecimal getValorPagamento() {
-		return valorPagamento;
+	public GestaoProdutoServicoDomain getGestaoProdutoServicoDomain() {
+		return gestaoProdutoServicoDomain;
 	}
 
-	public void setValorPagamento(BigDecimal valorPagamento) {
-		this.valorPagamento = valorPagamento;
+	public void setGestaoProdutoServicoDomain(GestaoProdutoServicoDomain gestaoProdutoServicoDomain) {
+		this.gestaoProdutoServicoDomain = gestaoProdutoServicoDomain;
 	}
 
-	public Date getDataVencimento() {
-		return dataVencimento;
+	public GestaoCategoriaProdutoServicoDomain getGestaoCategoriaProdutoServicoDomain() {
+		return gestaoCategoriaProdutoServicoDomain;
 	}
 
-	public void setDataVencimento(Date dataVencimento) {
-		this.dataVencimento = dataVencimento;
+	public void setGestaoCategoriaProdutoServicoDomain(
+			GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain) {
+		this.gestaoCategoriaProdutoServicoDomain = gestaoCategoriaProdutoServicoDomain;
+	}
+
+	public String getNumeroNotaFiscal() {
+		return numeroNotaFiscal;
+	}
+
+	public void setNumeroNotaFiscal(String numeroNotaFiscal) {
+		this.numeroNotaFiscal = numeroNotaFiscal;
+	}
+
+	public BigDecimal getValorPrevisto() {
+		return valorPrevisto;
+	}
+
+	public void setValorPrevisto(BigDecimal valorPrevisto) {
+		this.valorPrevisto = valorPrevisto;
+	}
+
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public BigDecimal getValorTotalJuros() {
+		return valorTotalJuros;
+	}
+
+	public void setValorTotalJuros(BigDecimal valorTotalJuros) {
+		this.valorTotalJuros = valorTotalJuros;
+	}
+
+	public BigDecimal getValorItemDespesa() {
+		return valorItemDespesa;
+	}
+
+	public void setValorItemDespesa(BigDecimal valorItemDespesa) {
+		this.valorItemDespesa = valorItemDespesa;
+	}
+
+	public BigDecimal getValorTotalDespesa() {
+		return valorTotalDespesa;
+	}
+
+	public void setValorTotalDespesa(BigDecimal valorTotalDespesa) {
+		this.valorTotalDespesa = valorTotalDespesa;
+	}
+
+	public BigDecimal getValorTotalPago() {
+		return valorTotalPago;
+	}
+
+	public void setValorTotalPago(BigDecimal valorTotalPago) {
+		this.valorTotalPago = valorTotalPago;
+	}
+
+	public BigDecimal getValorRestante() {
+		return valorRestante;
+	}
+
+	public void setValorRestante(BigDecimal valorRestante) {
+		this.valorRestante = valorRestante;
+	}
+
+	public Date getDataCadastroDespesa() {
+		return dataCadastroDespesa;
+	}
+
+	public void setDataCadastroDespesa(Date dataCadastroDespesa) {
+		this.dataCadastroDespesa = dataCadastroDespesa;
+	}
+
+	public Date getDataVencimentoDespesa() {
+		return dataVencimentoDespesa;
+	}
+
+	public void setDataVencimentoDespesa(Date dataVencimentoDespesa) {
+		this.dataVencimentoDespesa = dataVencimentoDespesa;
+	}
+
+	public Date getDataTerminoPagamentoDespesa() {
+		return dataTerminoPagamentoDespesa;
+	}
+
+	public void setDataTerminoPagamentoDespesa(Date dataTerminoPagamentoDespesa) {
+		this.dataTerminoPagamentoDespesa = dataTerminoPagamentoDespesa;
+	}
+
+	public Date getDataMesReferenciaDespesa() {
+		return dataMesReferenciaDespesa;
+	}
+
+	public void setDataMesReferenciaDespesa(Date dataMesReferenciaDespesa) {
+		this.dataMesReferenciaDespesa = dataMesReferenciaDespesa;
+	}
+
+	public Date getDataPagamentoDespesa() {
+		return dataPagamentoDespesa;
+	}
+
+	public void setDataPagamentoDespesa(Date dataPagamentoDespesa) {
+		this.dataPagamentoDespesa = dataPagamentoDespesa;
+	}
+
+	public TipoDespesaEnumeration getTipoDespesaEnumeration() {
+		return tipoDespesaEnumeration;
+	}
+
+	public void setTipoDespesaEnumeration(TipoDespesaEnumeration tipoDespesaEnumeration) {
+		this.tipoDespesaEnumeration = tipoDespesaEnumeration;
+	}
+
+	public GestaoPessoaDomain getFontePagamentoPessoa() {
+		return fontePagamentoPessoa;
+	}
+
+	public void setFontePagamentoPessoa(GestaoPessoaDomain fontePagamentoPessoa) {
+		this.fontePagamentoPessoa = fontePagamentoPessoa;
+	}
+
+	public TipoSituacaoPagamentoEnumeration getTipoSituacaoPagamentoEnumeration() {
+		return tipoSituacaoPagamentoEnumeration;
+	}
+
+	public void setTipoSituacaoPagamentoEnumeration(TipoSituacaoPagamentoEnumeration tipoSituacaoPagamentoEnumeration) {
+		this.tipoSituacaoPagamentoEnumeration = tipoSituacaoPagamentoEnumeration;
+	}
+
+	public TipoPeriodoEnumeration getTipoPeriodoEnumeration() {
+		return tipoPeriodoEnumeration;
+	}
+
+	public void setTipoPeriodoEnumeration(TipoPeriodoEnumeration tipoPeriodoEnumeration) {
+		this.tipoPeriodoEnumeration = tipoPeriodoEnumeration;
+	}
+
+	public TipoFormaPagamentoEnumeration getTipoFormaPagamentoEnumeration() {
+		return tipoFormaPagamentoEnumeration;
+	}
+
+	public void setTipoFormaPagamentoEnumeration(TipoFormaPagamentoEnumeration tipoFormaPagamentoEnumeration) {
+		this.tipoFormaPagamentoEnumeration = tipoFormaPagamentoEnumeration;
+	}
+
+	public TipoCanalPagamentoEnumeration getTipoCanalPagamentoEnumeration() {
+		return tipoCanalPagamentoEnumeration;
+	}
+
+	public void setTipoCanalPagamentoEnumeration(TipoCanalPagamentoEnumeration tipoCanalPagamentoEnumeration) {
+		this.tipoCanalPagamentoEnumeration = tipoCanalPagamentoEnumeration;
+	}
+
+	public Integer getNumeroParcela() {
+		return numeroParcela;
+	}
+
+	public void setNumeroParcela(Integer numeroParcela) {
+		this.numeroParcela = numeroParcela;
+	}
+
+	public Integer getQuantidadeProduto() {
+		return quantidadeProduto;
+	}
+
+	public void setQuantidadeProduto(Integer quantidadeProduto) {
+		this.quantidadeProduto = quantidadeProduto;
+	}
+
+	public Integer getQuantidadeParcela() {
+		return quantidadeParcela;
+	}
+
+	public void setQuantidadeParcela(Integer quantidadeParcela) {
+		this.quantidadeParcela = quantidadeParcela;
+	}
+
+	public TipoAtivoInativoEnumeration getTipoAtivoInativoEnumeration() {
+		return tipoAtivoInativoEnumeration;
+	}
+
+	public void setTipoAtivoInativoEnumeration(TipoAtivoInativoEnumeration tipoAtivoInativoEnumeration) {
+		this.tipoAtivoInativoEnumeration = tipoAtivoInativoEnumeration;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 	
 }

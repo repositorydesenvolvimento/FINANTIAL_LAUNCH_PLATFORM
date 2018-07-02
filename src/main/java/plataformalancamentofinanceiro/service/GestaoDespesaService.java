@@ -1,10 +1,10 @@
 package plataformalancamentofinanceiro.service;
 
-public class GestaDespesaService extends BaseService {
+public class GestaoDespesaService extends BaseService {
 
 	private static final long serialVersionUID = 1L;
 	
-	public GestaDespesaService() {
+	public GestaoDespesaService() {
 		
 	}
 	

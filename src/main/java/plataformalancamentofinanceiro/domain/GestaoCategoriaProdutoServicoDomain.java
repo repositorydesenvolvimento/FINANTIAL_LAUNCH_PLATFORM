@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TB_GESTAO_PESSOA")
-public class GestaoPessoaDomain extends BaseDomain {
+@Table(name = "TB_GESTAO_CATEGORIA_PRODUTO_SERVICO")
+public class GestaoCategoriaProdutoServicoDomain extends BaseDomain {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -16,5 +16,5 @@ public class GestaoPessoaDomain extends BaseDomain {
 	@GeneratedValue
 	@Column(name = "CODIGO", nullable = false)
 	private Long codigo;
-	
+
 }
