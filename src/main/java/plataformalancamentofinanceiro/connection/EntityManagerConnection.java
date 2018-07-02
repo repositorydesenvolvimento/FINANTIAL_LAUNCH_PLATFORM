@@ -13,16 +13,13 @@ public class EntityManagerConnection extends BaseRepository {
 	
 	private static EntityManagerFactory entityManagerFactory;
 	
-	@SuppressWarnings("static-access")
-	public EntityManagerConnection() {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory(ConstantantesUtility.NAME_PERSISTENCE_UNIT_MYSQL);
-	}
+	public EntityManagerConnection() { }
 	
 	static {
 		entityManagerFactory = Persistence.createEntityManagerFactory(ConstantantesUtility.NAME_PERSISTENCE_UNIT_MYSQL);
 	}
 	
-	public static EntityManager geEntityManager() {
+	public static EntityManager getEntityManager() {
 		return entityManagerFactory.createEntityManager();
 	}
 	

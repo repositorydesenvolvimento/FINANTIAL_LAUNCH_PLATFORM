@@ -17,7 +17,9 @@ import javax.persistence.Table;
 import plataformalancamentofinanceiro.enumeration.TipoAtivoInativoEnumeration;
 import plataformalancamentofinanceiro.enumeration.TipoCanalPagamentoEnumeration;
 import plataformalancamentofinanceiro.enumeration.TipoDespesaEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoDocumentoEnumeration;
 import plataformalancamentofinanceiro.enumeration.TipoFormaPagamentoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoPeriodoEnumeration;
 import plataformalancamentofinanceiro.enumeration.TipoSituacaoPagamentoEnumeration;
 
 /*
@@ -61,7 +63,7 @@ import plataformalancamentofinanceiro.enumeration.TipoSituacaoPagamentoEnumerati
  * # Nota: Entende-se por Favorecido a Pessoa do Sistema (fisica ou juridica) ao qual devera ser quitado uma parcela
  */
 @Entity
-@Table(name = "TB_DESPESA")
+@Table(name = "TB_GESTAO_DESPESA")
 public class GestaoDespesaDomain extends BaseDomain {
 
 	 private static final long serialVersionUID = 1L;
@@ -95,6 +97,7 @@ public class GestaoDespesaDomain extends BaseDomain {
 	@OneToOne
 	@JoinColumn(name = "ID_CATEGORIA_PRODUTO", referencedColumnName = "CODIGO", nullable = false)
 	private GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain;
+	
 	/**
 	 * Refere-se ao numero da Nota Fiscal emitida pelo estabelecimento no ato da
 	 * compra.
@@ -240,6 +243,14 @@ public class GestaoDespesaDomain extends BaseDomain {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_CANAL_PAGAMENTO", nullable = true)
 	private TipoCanalPagamentoEnumeration tipoCanalPagamentoEnumeration;
+	
+	/**
+	 * Refere-se ao Canal de Pagamento de uma determinada despesa, ou seja, qual
+	 * meio o pagamento da despesa foi realizado.
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_DOCUMENTO", nullable = true)
+	private TipoDocumentoEnumeration tipoDocumentoEnumeration;
 	
 	/**
 	 * Refere-se ao Numero de Parcelas que uma determinada Despesa devera ser
@@ -499,6 +510,14 @@ public class GestaoDespesaDomain extends BaseDomain {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public TipoDocumentoEnumeration getTipoDocumentoEnumeration() {
+		return tipoDocumentoEnumeration;
+	}
+
+	public void setTipoDocumentoEnumeration(TipoDocumentoEnumeration tipoDocumentoEnumeration) {
+		this.tipoDocumentoEnumeration = tipoDocumentoEnumeration;
 	}
 	
 }
