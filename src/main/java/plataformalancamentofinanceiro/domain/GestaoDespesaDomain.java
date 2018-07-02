@@ -2,11 +2,10 @@ package plataformalancamentofinanceiro.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.oracle.webservices.internal.api.EnvelopeStyle;
 
 /*
  * # Responsavel por estabelecer a gestao de Despesas Pessoais.
@@ -54,6 +53,8 @@ public class GestaoDespesaDomain extends BaseDomain {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue	
 	private Long codigo;
 	
 	private GestaoPessoaDomain favorecido;
