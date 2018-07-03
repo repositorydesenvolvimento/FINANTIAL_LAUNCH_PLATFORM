@@ -38,9 +38,11 @@
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all"/>
 
-</head>
+</h:head>
 
 <body class="animsition">
+
+<h:form prependId="false">
 
     <div class="page-wrapper">
        
@@ -473,8 +475,12 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>R$ 12.000,00</h2>
-                                                <span>Receitas</span>
+                                                <h2>
+                                                	R$ 12.000,00
+                                                </h2>
+                                                <span>
+                                                	<h:commandLink action="index.xhtml" value="Receitas" />
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -493,7 +499,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>R$ 388,68</h2>
-                                                <span>Despesas</span>
+                                                <span>Despesas Variáveis</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -511,7 +517,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>R$ 1.086,00</h2>
-                                                <span>Despesas Futuras</span>
+                                                <span>Despesas Fixas</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -545,7 +551,6 @@
                             <div class="col-lg-12">
                                 <h2 class="title-1 m-b-25">Movimentações Financeiras</h2>
                                 <div class="table-responsive table--no-card m-b-250">
-                                	<h:form>
 	                                   <h:dataTable value="#{gestaoDespesaController.findAll()}" var="gestaoDespesaControllerResult" class="table table-borderless table-striped table-earning">
 	                                   	  <h:column>
 	                                   	  	<f:facet name="header">Número da Parcela</f:facet>
@@ -601,7 +606,6 @@
 	                                   	  	<f:facet name="header">Ações</f:facet>
 	                                   	  </h:column>
 	                                   </h:dataTable>
-	                                </h:form>
                                 </div>
                             </div>
                         </div>
@@ -1151,6 +1155,8 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+
+</h:form>
 
 </body>
 
