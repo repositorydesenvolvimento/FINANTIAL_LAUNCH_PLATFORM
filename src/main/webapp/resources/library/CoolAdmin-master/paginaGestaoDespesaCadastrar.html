@@ -42,7 +42,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index.xhtml">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -61,7 +61,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="index.html">Dashboard 1</a>
+                                    <a href="index.xhtml">Dashboard 1</a>
                                 </li>
                                 <li>
                                     <a href="index2.html">Dashboard 2</a>
@@ -83,7 +83,7 @@
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
                         <li>
-                            <a href="form.html">
+                            <a href="paginaGestaoDespesaCadastrar.html">
                                 <i class="far fa-check-square"></i>Gestão de Despesas</a>
                         </li>
                         <li>
@@ -169,7 +169,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Principal</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="index.html">Dashboard 1</a>
+                                    <a href="index.xhtml">Dashboard 1</a>
                                 </li>
                                 <li>
                                     <a href="index2.html">Dashboard 2</a>
@@ -191,7 +191,7 @@
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
                         <li class="active">
-                            <a href="form.html">
+                            <a href="paginaGestaoDespesaCadastrar.html">
                                 <i class="far fa-check-square"></i>Gestão de Despesas</a>
                         </li>
                         <li>
@@ -437,145 +437,134 @@
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
-
-            <!-- MAIN CONTENT-->
+			
+			<!-- MAIN CONTENT-->
             <div class="main-content">
-                <div class="section__content section__content--p30">
+                
+                <div class="section__content section__content--p10">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-header">Cadastro de Despesas</div>
-                                    <div class="card-body">
-                                        <hr>
-                                        
-                                        <form action="" method="post" novalidate="novalidate">
-											
-											<div class="row form-group">
-												<div class="form-group col-md-6">
-	                                                <label for="cc-payment" class="control-label mb-1">Favorecido</label>
-	                                                <div class="">
-	                                                    <select name="select" id="select" class="form-control">
-	                                                        <option value="0">Selecione</option>
-	                                                        <option value="1">Banco do Brasil</option>
-	                                                        <option value="2">Banco Santander</option>
-	                                                        <option value="3">Banco Nubank</option>
-	                                                    </select>
-	                                                </div>
-	                                            </div>
-												<div class="col-md-6">
-	                                                <label for="cc-payment" class="control-label mb-1">Produto ou Serviço</label>
-	                                                <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
-	                                            </div>
-	                                        </div>
-	                                        
-	                                        <div class="row form-group">
-												<div class="form-group col-md-8">
-	                                                <label for="cc-payment" class="control-label mb-1">Categoria</label>
-	                                                <div class="">
-	                                                    <select name="select" id="select" class="form-control">
-	                                                        <option value="0">Selecione</option>
-	                                                        <option value="1">Mensalidade</option>
-	                                                        <option value="2">Fatura</option>
-	                                                    </select>
-	                                                </div>
-	                                            </div>
-												<div class="col-md-4">
-	                                                <label for="cc-payment" class="control-label mb-1">Valor</label>
-	                                                <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" placeholder="R$">
-	                                            </div>
-	                                        </div>
-                                            
-                                            <div class="row form-group">
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="cc-exp" class="control-label mb-1">Data</label>
-                                                        <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration"
-                                                            data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY"
-                                                            autocomplete="cc-exp">
-                                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <label for="x_card_code" class="control-label mb-1">Security code</label>
-                                                    <div class="input-group">
-                                                        <input id="x_card_code" name="x_card_code" type="tel" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code"
-                                                            data-val-cc-cvc="Please enter a valid security code" autocomplete="off">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                             <div class="row form-group">
-												<div class="form-group col-md-6">
-	                                                <label for="cc-payment" class="control-label mb-1">Tipo de Despesa</label>
-	                                                <div class="">
-	                                                    <select name="select" id="select" class="form-control">
-	                                                        <option value="0">Selecione</option>
-	                                                        <option value="1">Despesa Fixa</option>
-	                                                        <option value="2">Despesa Variável</option>
-	                                                    </select>
-	                                                </div>
-	                                            </div>
-	                                            
-												<div class="form-group col-md-6">
-	                                                <label for="cc-payment" class="control-label mb-1">Canal de Pagamento</label>
-	                                                <div class="">
-	                                                    <select name="select" id="select" class="form-control">
-	                                                        <option value="0">Selecione</option>
-	                                                        <option value="1">Internet Banking</option>
-	                                                        <option value="2">Caixa</option>
-	                                                    </select>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                        
-	                                        <div class="row form-group">
-												<div class="form-group col-md-6">
-	                                                <label for="cc-payment" class="control-label mb-1">Tipo de Despesa</label>
-	                                                <div class="">
-	                                                    <select name="select" id="select" class="form-control">
-	                                                        <option value="0">Selecione</option>
-	                                                        <option value="1">Banco Santander</option>
-	                                                        <option value="2">Banco do Brasil</option>
-	                                                        <option value="2">Banco Nubank</option>
-	                                                    </select>
-	                                                </div>
-	                                            </div>
-	                                            <div class="form-group col-md-6">
-	                                                <label for="cc-payment" class="control-label mb-1">Situação da Despesa</label>
-	                                                <div class="">
-	                                                    <select name="select" id="select" class="form-control">
-	                                                        <option value="0">Selecione</option>
-	                                                        <option value="1">Pago</option>
-	                                                        <option value="2">Aguardando Pagamento</option>
-	                                                    </select>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                      </div>
-	                                        
-                                            <div>
-                                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                                    <span id="payment-button-amount">Cadastrar</span>
-                                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
                         
-                    </div>
+                        <div class="m-t-0">
+                            <div class="col-lg-12">
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>Favorecido</th>
+                                                <th>Produto/Servico</th>
+                                                <th class="text-right">Categoria</th>
+                                                <th class="text-right">Valor</th>
+                                                <th class="text-right">Vencimento</th>
+                                                <th class="text-right">Pagamento</th>
+                                                <th class="text-right">Tipo de Despesa</th>
+                                                <th class="text-right">Fonte de Pagamento</th>
+                                                <th class="text-right">Situacao</th>
+                                                <th class="text-right">Acoes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>TIM Telecomunicacoes</td>
+                                                <td>Taxa Institucional</td>
+                                                <td>Mensalidade</td>
+                                                <td class="text-right">R$ 300,00</td>
+                                                <td class="text-right">10/06/2018</td>
+                                                <td class="text-right">Aguardando</td>
+                                                <td class="text-right">Despesa Mensal</td>
+                                                <td class="text-right">Banco Santander</td>
+                                                <td class="text-right">Aguardando Pagamento</td>
+                                                <td class="text-right">
+                                                	<div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+			                                            <select class="js-select2" name="property">
+			                                                <option selected="selected">Acoes</option>
+			                                                <option value="">Editar</option>
+			                                                <option value="">Deletar</option>
+			                                            </select>
+			                                            <div class="dropDownSelect2"></div>
+			                                        </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Banco Santander do Brasil</td>
+                                                <td>Taxa Institucional</td>
+                                                <td>Mensalidade</td>
+                                                <td class="text-right">R$ 300,00</td>
+                                                <td class="text-right">10/06/2018</td>
+                                                <td class="text-right">Aguardando</td>
+                                                <td class="text-right">Despesa Mensal</td>
+                                                <td class="text-right">Banco Santander</td>
+                                                <td class="text-right">Aguardando Pagamento</td>
+                                                <td class="text-right">
+                                                	<div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+			                                            <select class="js-select2" name="property">
+			                                                <option selected="selected">Acoes</option>
+			                                                <option value="">Editar</option>
+			                                                <option value="">Deletar</option>
+			                                            </select>
+			                                            <div class="dropDownSelect2"></div>
+			                                        </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Banco Nubank</td>
+                                                <td>Taxa Institucional</td>
+                                                <td>Mensalidade</td>
+                                                <td class="text-right">R$ 300,00</td>
+                                                <td class="text-right">10/06/2018</td>
+                                                <td class="text-right">Aguardando</td>
+                                                <td class="text-right">Despesa Mensal</td>
+                                                <td class="text-right">Banco Santander</td>
+                                                <td class="text-right">Aguardando Pagamento</td>
+                                                <td class="text-right">
+                                                	<div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+			                                            <select class="js-select2" name="property">
+			                                                <option selected="selected">Acoes</option>
+			                                                <option value="">Editar</option>
+			                                                <option value="">Deletar</option>
+			                                            </select>
+			                                            <div class="dropDownSelect2"></div>
+			                                        </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Caixa Economica Federal</td>
+                                                <td>Taxa Institucional</td>
+                                                <td>Mensalidade</td>
+                                                <td class="text-right">R$ 300,00</td>
+                                                <td class="text-right">10/06/2018</td>
+                                                <td class="text-right">Aguardando</td>
+                                                <td class="text-right">Despesa Mensal</td>
+                                                <td class="text-right">Banco Santander</td>
+                                                <td class="text-right">Aguardando Pagamento</td>
+                                                <td class="text-right">
+                                                	<div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+			                                            <select class="js-select2" name="property">
+			                                                <option selected="selected">Acoes</option>
+			                                                <option value="">Editar</option>
+			                                                <option value="">Deletar</option>
+			                                            </select>
+			                                            <div class="dropDownSelect2"></div>
+			                                        </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="copyright">
+						<p>
+							Copyright © 2018 Colorlib. All rights reserved. Template by <a
+								href="https://colorlib.com">Colorlib</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
                 </div>
             </div>
         </div>
