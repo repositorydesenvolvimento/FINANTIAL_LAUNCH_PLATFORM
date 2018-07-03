@@ -16,9 +16,9 @@ public class GestaoDespesaRepository extends BaseGenericDao {
 	
 	public List<GestaoDespesaDomain> findAll() {
 		StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append(" SELECT pessoaDomain");
-			stringBuilder.append(" FROM PessoaDomain pessoaDomain");
-			stringBuilder.append(" ORDER BY pessoaDomain.nome");
+			stringBuilder.append(" SELECT gestaoDespesaDomain");
+			stringBuilder.append(" FROM GestaoDespesaDomain gestaoDespesaDomain");
+			stringBuilder.append(" ORDER BY gestaoDespesaDomain.gestaoPessoaDomain.nome");
 		TypedQuery<GestaoDespesaDomain> typedQuery = getEntityManager().createQuery(stringBuilder.toString(), GestaoDespesaDomain.class);		
 		return typedQuery.getResultList();
 	}

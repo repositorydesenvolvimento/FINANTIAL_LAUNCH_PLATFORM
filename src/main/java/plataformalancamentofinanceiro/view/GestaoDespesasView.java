@@ -10,5 +10,8 @@ public class GestaoDespesasView extends BaseController {
 		
 	}
 	
+	public String labelDemonstrativo() {
+		return "Demonstrativos";
+	}
 	
 }

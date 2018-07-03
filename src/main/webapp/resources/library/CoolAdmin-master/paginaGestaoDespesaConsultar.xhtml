@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    
+</head>
+<body>
+ <!-- BEGIN - CONSULTA DE DESPESAS -->
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h2 class="title-1 m-b-25">Movimentações Financeiras</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                	<h:form>
+	                                   <h:dataTable value="#{gestaoDespesaController.findAll()}" var="gestaoDespesaControllerResult" class="table table-borderless table-striped table-earning">
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Número da Parcela</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.numeroParcela}" />
+	                                   	  </h:column>	
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Favorecido</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoPessoaDomain.nome}" />
+	                                   	  </h:column>	
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Categoria</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoCategoriaProdutoServicoDomain.nome}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Valor</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.valorPrevisto}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Vencimento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataVencimentoDespesa}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Pagamento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataPagamentoDespesa}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Tipo da Despesa</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoDespesaEnumeration.name()}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Fonte Pagamento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoFormaPagamentoEnumeration.name()}" />
+	                                   	  </h:column>	
+	                                   <h:column>
+	                                   	  	<f:facet name="header">Canal Pagamento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoCanalPagamentoEnumeration.sigla}" />
+	                                   	  </h:column>
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Situação</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoSituacaoPagamentoEnumeration.name()}" />
+	                                   	  </h:column>
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Ações</f:facet>
+	                                   	  </h:column>
+	                                   </h:dataTable>
+	                                </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END - CONSULTA DE DESPESAS -->
+</body>
+</html>

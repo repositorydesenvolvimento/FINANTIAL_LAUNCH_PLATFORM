@@ -456,7 +456,7 @@
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">
-                                    	<h:outputText value="#{gestaoDespesaController.labelDemonstrativo()}" />
+                                    	<h:outputText value="#{gestaoDespesaController.gestaoDespesasView.labelDemonstrativo()}" />
                                     </h2>
                                     <button type="button" data-toggle="modal" data-target="#cadastroDespesaModal" class="au-btn au-btn-icon au-btn--blue">
                                         <i class="zmdi zmdi-plus"></i>Novo Lançamento Financeiro</button>
@@ -539,6 +539,73 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- BEGIN - CONSULTA DE DESPESAS -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="title-1 m-b-25">Movimentações Financeiras</h2>
+                                <div class="table-responsive table--no-card m-b-250">
+                                	<h:form>
+	                                   <h:dataTable value="#{gestaoDespesaController.findAll()}" var="gestaoDespesaControllerResult" class="table table-borderless table-striped table-earning">
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Número da Parcela</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.numeroParcela}" />
+	                                   	  </h:column>	
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Favorecido</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoPessoaDomain.nome}" />
+	                                   	  </h:column>	
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Categoria</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoCategoriaProdutoServicoDomain.nome}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Valor</f:facet>
+	                                   	  	<h:outputLabel value="R$ " rendered="#{gestaoDespesaControllerResult.valorPrevisto != null}"/>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.valorPrevisto}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Vencimento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataVencimentoDespesa}">
+	                                   	  		<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
+	                                   	  	</h:outputLabel>
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Pagamento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataPagamentoDespesa}">
+	                                   	  		<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
+	                                   	  	</h:outputLabel>
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Tipo da Despesa</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoDespesaEnumeration.name()}" />
+	                                   	  </h:column>
+	                                   	  
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Fonte Pagamento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoFormaPagamentoEnumeration.name()}" />
+	                                   	  </h:column>	
+	                                   <h:column>
+	                                   	  	<f:facet name="header">Canal Pagamento</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoCanalPagamentoEnumeration.sigla}" />
+	                                   	  </h:column>
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Situação</f:facet>
+	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoSituacaoPagamentoEnumeration.name()}" />
+	                                   	  </h:column>
+	                                   	  <h:column>
+	                                   	  	<f:facet name="header">Ações</f:facet>
+	                                   	  </h:column>
+	                                   </h:dataTable>
+	                                </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END - CONSULTA DE DESPESAS -->
                         
                         <div class="row">
                             <div class="col-lg-9">
@@ -645,6 +712,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
