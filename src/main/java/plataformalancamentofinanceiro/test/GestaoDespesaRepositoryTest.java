@@ -8,7 +8,7 @@ import plataformalancamentofinanceiro.repository.GestaoDespesaRepository;
 public class GestaoDespesaRepositoryTest {
 	
 	public static void main(String[] args) {
-//		save();
+		save();
 		findAll();
 	}
 	

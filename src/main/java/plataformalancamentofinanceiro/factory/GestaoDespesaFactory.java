@@ -56,7 +56,8 @@ public class GestaoDespesaFactory extends BaseFactory {
 			gestaoDespesaDomain.setTipoSituacaoPagamentoEnumeration(TipoSituacaoPagamentoEnumeration.AGUARDANDO_PAGAMENTO);
 			gestaoDespesaDomain.setTipoDespesaEnumeration(TipoDespesaEnumeration.DESPESA_FIXA);
 			gestaoDespesaDomain.setTipoPeriodoEnumeration(TipoPeriodoEnumeration.MENSAL);
-			gestaoDespesaDomain.setFontePagamentoPessoa(gestaoPessoaDao.findOne(GestaoPessoaDomain.class, 4L));	
+			gestaoDespesaDomain.setFontePagamentoPessoa(gestaoPessoaDao.findOne(GestaoPessoaDomain.class, 1L));	
+			gestaoDespesaDomain.setGestaoCategoriaProdutoServicoDomain(gestaoCategoriaProdutoServicoDao.findOne(GestaoCategoriaProdutoServicoDomain.class, 1L));
 		return gestaoDespesaDomain;
 	}
 	
