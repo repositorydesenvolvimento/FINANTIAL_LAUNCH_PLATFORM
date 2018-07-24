@@ -539,98 +539,263 @@
                                     <div class="table-data__tool-left">
                                     </div>
                                     <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="zmdi zmdi-plus"></i>Novo Lançamento Financeiro</button>
-                                    </div>
+										<button type="button" data-toggle="modal" data-target="#cadastroDespesaModal" class="au-btn au-btn-icon au-btn--blue">
+											<i class="zmdi zmdi-plus"></i> Novo Lançamento Financeiro
+										</button>
+									</div>
                                 </div>
                                 
                                 <!-- END DATA TABLE -->
                             </div>
                         </div>
-                            
-                        <div class="col-md-12">
-                          	<h:dataTable value="#{gestaoDespesaController.findAll()}" var="gestaoDespesaControllerResult" class="table table-data2">
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Número da Parcela</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.numeroParcela}" />
-	                                   	  </h:column>
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Favorecido</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoPessoaDomain.nome}" />
-	                                   	  </h:column>	
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Categoria</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoCategoriaProdutoServicoDomain.nome}" styleClass="desc" />
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Valor</f:facet>
-	                                   	  	<h:outputLabel value="R$ " rendered="#{gestaoDespesaControllerResult.valorPrevisto != null}"/>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.valorPrevisto}" />
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Vencimento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataVencimentoDespesa}">
-	                                   	  		<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
-	                                   	  	</h:outputLabel>
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Pagamento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataPagamentoDespesa}">
-	                                   	  		<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
-	                                   	  	</h:outputLabel>
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Tipo da Despesa</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoDespesaEnumeration.name()}" />
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Fonte Pagamento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoFormaPagamentoEnumeration.name()}" />
-	                                   	  </h:column>	
-	                                   <h:column>
-	                                   	  	<f:facet name="header">Canal Pagamento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoCanalPagamentoEnumeration.sigla}" />
-	                                   	  </h:column>
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Situação</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoSituacaoPagamentoEnumeration.name()}" styleClass="status--denied" />
-	                                   	  </h:column>
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Ações</f:facet>
-												<div class="table-data-feature">
-													<button class="item" data-toggle="tooltip"
-														data-placement="top" title="Send">
-														<i class="zmdi zmdi-mail-send"></i>
-													</button>
-													<button class="item" data-toggle="tooltip"
-														data-placement="top" title="Edit">
-														<i class="zmdi zmdi-edit"></i>
-													</button>
-													<button class="item" data-toggle="tooltip"
-														data-placement="top" title="Delete">
-														<i class="zmdi zmdi-delete"></i>
-													</button>
-													<button class="item" data-toggle="tooltip"
-														data-placement="top" title="More">
-														<i class="zmdi zmdi-more"></i>
-													</button>
-												</div>
+
+						<div class="col-md-12">
+							<h:dataTable value="#{gestaoDespesaController.findAll()}"
+								var="gestaoDespesaControllerResult" class="table table-data2">
+								<h:column>
+									<f:facet name="header">Número da Parcela</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.numeroParcela}" />
 								</h:column>
-	                                   </h:dataTable>
-	                         </div>
-                                
-                            </div>
+								<h:column>
+									<f:facet name="header">Favorecido</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.gestaoPessoaDomain.nome}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Categoria</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.gestaoCategoriaProdutoServicoDomain.nome}"
+										styleClass="desc" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Valor</f:facet>
+									<h:outputLabel value="R$ "
+										rendered="#{gestaoDespesaControllerResult.valorPrevisto != null}" />
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.valorPrevisto}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Vencimento</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.dataVencimentoDespesa}">
+										<f:convertDateTime pattern="dd/MM/yyy"
+											timeZone="American/Sao_Paulo" />
+									</h:outputLabel>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Pagamento</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.dataPagamentoDespesa}">
+										<f:convertDateTime pattern="dd/MM/yyy"
+											timeZone="American/Sao_Paulo" />
+									</h:outputLabel>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Tipo da Despesa</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.tipoDespesaEnumeration.name()}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Fonte Pagamento</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.tipoFormaPagamentoEnumeration.name()}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Canal Pagamento</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.tipoCanalPagamentoEnumeration.sigla}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Situação</f:facet>
+									<h:outputLabel
+										value="#{gestaoDespesaControllerResult.tipoSituacaoPagamentoEnumeration.name()}"
+										styleClass="status--denied" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Ações</f:facet>
+									<div class="table-data-feature">
+										<button class="item" data-toggle="tooltip"
+											data-placement="top" title="Send">
+											<i class="zmdi zmdi-mail-send"></i>
+										</button>
+										<button class="item" data-toggle="tooltip"
+											data-placement="top" title="Edit">
+											<i class="zmdi zmdi-edit"></i>
+										</button>
+										<button class="item" data-toggle="tooltip"
+											data-placement="top" title="Delete">
+											<i class="zmdi zmdi-delete"></i>
+										</button>
+										<button class="item" data-toggle="tooltip"
+											data-placement="top" title="More">
+											<i class="zmdi zmdi-more"></i>
+										</button>
+									</div>
+								</h:column>
+							</h:dataTable>
+						</div>
+
+					</div>
                         </div>
                     </div>
             </section>
             <!-- END DATA TABLE-->
 
-            <!-- COPYRIGHT-->
+			<!-- modal scroll -->
+			<div class="modal fade" id="cadastroDespesaModal" tabindex="-1"
+				role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="scrollmodalLabel">Cadastro de
+								Despesas Fixas</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form action="" method="post" novalidate="novalidate">
+
+								<div class="row form-group">
+									<div class="form-group col-md-6">
+										<label for="cc-payment" class="control-label mb-1">Favorecido</label>
+										<div class="">
+											<select name="select" id="select" class="form-control">
+												<option value="0">Selecione</option>
+												<option value="1">Banco do Brasil</option>
+												<option value="2">Banco Santander</option>
+												<option value="3">Banco Nubank</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label for="cc-payment" class="control-label mb-1">Produto
+											ou Serviço</label> <input id="cc-pament" name="cc-payment"
+											type="text" class="form-control" aria-required="true"
+											aria-invalid="false" value="" />
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="form-group col-md-8">
+										<label for="cc-payment" class="control-label mb-1">Categoria</label>
+										<div class="">
+											<select name="select" id="select" class="form-control">
+												<option value="0">Selecione</option>
+												<option value="1">Mensalidade</option>
+												<option value="2">Fatura</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<label for="cc-payment" class="control-label mb-1">Valor</label>
+										<input id="cc-pament" name="cc-payment" type="text"
+											class="form-control" aria-required="true"
+											aria-invalid="false" value="" placeholder="R$" />
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="col-3">
+										<div class="form-group">
+											<label for="cc-exp" class="control-label mb-1">Data</label> <input
+												id="cc-exp" name="cc-exp" type="tel"
+												class="form-control cc-exp" value="" data-val="true"
+												data-val-required="Please enter the card expiration"
+												data-val-cc-exp="Please enter a valid month and year"
+												placeholder="MM / YY" autocomplete="cc-exp" /> <span
+												class="help-block" data-valmsg-for="cc-exp"
+												data-valmsg-replace="true"></span>
+										</div>
+									</div>
+									<div class="col-9">
+										<label for="x_card_code" class="control-label mb-1">Security
+											code</label>
+										<div class="input-group">
+											<input id="x_card_code" name="x_card_code" type="tel"
+												class="form-control cc-cvc" value="" data-val="true"
+												data-val-required="Please enter the security code"
+												data-val-cc-cvc="Please enter a valid security code"
+												autocomplete="off" />
+
+										</div>
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="form-group col-md-6">
+										<label for="cc-payment" class="control-label mb-1">Tipo
+											de Despesa</label>
+										<div class="">
+											<select name="select" id="select" class="form-control">
+												<option value="0">Selecione</option>
+												<option value="1">Despesa Fixa</option>
+												<option value="2">Despesa Variável</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="cc-payment" class="control-label mb-1">Canal
+											de Pagamento</label>
+										<div class="">
+											<select name="select" id="select" class="form-control">
+												<option value="0">Selecione</option>
+												<option value="1">Internet Banking</option>
+												<option value="2">Caixa</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="form-group col-md-6">
+										<label for="cc-payment" class="control-label mb-1">Tipo
+											de Despesa</label>
+										<div class="">
+											<select name="select" id="select" class="form-control">
+												<option value="0">Selecione</option>
+												<option value="1">Banco Santander</option>
+												<option value="2">Banco do Brasil</option>
+												<option value="2">Banco Nubank</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="cc-payment" class="control-label mb-1">Situação
+											da Despesa</label>
+										<div class="">
+											<select name="select" id="select" class="form-control">
+												<option value="0">Selecione</option>
+												<option value="1">Pago</option>
+												<option value="2">Aguardando Pagamento</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<button id="payment-button" type="submit"
+										class="btn btn-lg btn-info btn-block">
+										<span id="payment-button-amount">Cadastrar</span> <span
+											id="payment-button-sending" style="display: none;">Sending…</span>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end modal scroll -->
+
+			<!-- COPYRIGHT-->
             <section class="p-t-60 p-b-20">
                 <div class="container">
                     <div class="row">
