@@ -14,6 +14,24 @@ public class GestaoPessoaFactory extends BaseFactory {
 	
 	public GestaoPessoaFactory() { }
 	
+	public static GestaoPessoaDomain pessoaFisicaTherezaGracasRodrigues() {
+		GestaoPessoaDomain gestaoPessoaDomain = new GestaoPessoaDomain();
+			gestaoPessoaDomain.setDataCadastroSistema(new Date());
+			gestaoPessoaDomain.setNome("Thereza das Gracas Rodrigues");
+			gestaoPessoaDomain.setTipoCategoriaPessoaEnumeration(TipoCategoriaPessoaEnumeration.PESSOA_FISICA);
+			gestaoPessoaDomain.setTipoSituacaoEnumeration(TipoSituacaoEnumeration.ATIVO);
+		return gestaoPessoaDomain;
+	}
+	
+	public static GestaoPessoaDomain pessoaFisicaLeiaRodriguesSilva() {
+		GestaoPessoaDomain gestaoPessoaDomain = new GestaoPessoaDomain();
+			gestaoPessoaDomain.setDataCadastroSistema(new Date());
+			gestaoPessoaDomain.setNome("Leia Rodrigues Silva");
+			gestaoPessoaDomain.setTipoCategoriaPessoaEnumeration(TipoCategoriaPessoaEnumeration.PESSOA_FISICA);
+			gestaoPessoaDomain.setTipoSituacaoEnumeration(TipoSituacaoEnumeration.ATIVO);
+		return gestaoPessoaDomain;
+	}
+	
 	public static GestaoPessoaDomain instituicaoFinanceiraBancoSantanderBrasil() {
 		GestaoPessoaDomain gestaoPessoaDomain = new GestaoPessoaDomain();
 			gestaoPessoaDomain.setDataCadastroSistema(new Date());
@@ -66,6 +84,8 @@ public class GestaoPessoaFactory extends BaseFactory {
 			gestaoPessoaDomainList.add(instituicaoFinanceiraBancoNubankBrasil());
 			gestaoPessoaDomainList.add(instituicaoFinanceiraBancoSantanderBrasil());
 			gestaoPessoaDomainList.add(instituicaoTelefoniaInternetVivoTelecomunicacoes());
+			gestaoPessoaDomainList.add(pessoaFisicaTherezaGracasRodrigues());
+			gestaoPessoaDomainList.add(pessoaFisicaLeiaRodriguesSilva());
 		return gestaoPessoaDomainList;
 	}
 

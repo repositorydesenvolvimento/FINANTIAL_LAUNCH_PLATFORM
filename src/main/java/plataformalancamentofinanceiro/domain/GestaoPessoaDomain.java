@@ -85,6 +85,11 @@ public class GestaoPessoaDomain extends BaseDomain {
 	public void setDataCadastroSistema(Date dataCadastroSistema) {
 		this.dataCadastroSistema = dataCadastroSistema;
 	}
+
+	@Override
+	public String toString() {
+		return "GestaoPessoaDomain [Nome=" + nome + "]";
+	}
 	
 }
 	

@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     
@@ -1018,20 +1019,21 @@
 							<div class="row form-group">
 								<div class="form-group col-md-6">
 									<label for="cc-payment" class="control-label mb-1">Favorecido</label>
-									<div class="">
-										<select name="select" id="select" class="form-control">
-											<option value="0">Selecione</option>
-											<option value="1">Banco do Brasil</option>
-											<option value="2">Banco Santander</option>
-											<option value="3">Banco Nubank</option>
-										</select>
+									<div>
+										<h:selectOneMenu value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
+											<f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
+											<f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado}" itemLabel="#{gestaoPessoaResultado.nome}" />
+										</h:selectOneMenu>
 									</div>
 								</div>
 								<div class="col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Produto
-										ou Serviço</label> <input id="cc-pament" name="cc-payment" type="text"
-										class="form-control" aria-required="true" aria-invalid="false"
-										value=""/>
+									<label for="cc-payment" class="control-label mb-1">Produto ou Serviço</label>
+									<div>
+										<h:selectOneMenu value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
+											<f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
+											<f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado}" itemLabel="#{gestaoPessoaResultado.nome}" />
+										</h:selectOneMenu>
+									</div>
 								</div>
 							</div>
 

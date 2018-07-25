@@ -17,9 +17,23 @@ public class GestaoCategoriaProdutoServicoFactory extends BaseFactory {
 		return gestaoCategoriaProdutoServicoDomain;
 	}
 	
+	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoTelefoniaInternetMovel() {
+		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
+			gestaoCategoriaProdutoServicoDomain.setNome("Serviço de Telefônia Móvel e Internet Móvel");
+		return gestaoCategoriaProdutoServicoDomain;
+	}
+	
+	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoDoacaoInstituicaoReligiosaJudaica() {
+		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
+			gestaoCategoriaProdutoServicoDomain.setNome("Doação para Instituicao Religiosa Judaica");
+		return gestaoCategoriaProdutoServicoDomain;
+	}
+	
 	public static List<GestaoCategoriaProdutoServicoDomain> findAll() {
 		List<GestaoCategoriaProdutoServicoDomain> gestaoCategoriaProdutoServicoDomainResult = new ArrayList<GestaoCategoriaProdutoServicoDomain>();
 			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoTelefoniaInternetBandaLarga());
+			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoTelefoniaInternetMovel());
+			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoDoacaoInstituicaoReligiosaJudaica());
 		return gestaoCategoriaProdutoServicoDomainResult;
 	}
 	
