@@ -5,6 +5,7 @@
 	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	  xmlns:h="http://xmlns.jcp.org/jsf/html"
 	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     
@@ -1027,6 +1028,18 @@
 									</div>
 								</div>
 								<div class="col-md-6">
+									<label for="cc-payment" class="control-label mb-1">Categoria</label>
+									<div>
+										<h:selectOneMenu value="#{baseController.baseView.gestaoProdutoServicoDomain}" required="true" class="form-control">
+											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+											<f:selectItems value="#{baseController.baseView.gestaoProdutoServicoDomainList}" var="gestaoProdutoResultado" itemValue="#{gestaoProdutoResultado}" itemLabel="#{gestaoProdutoResultado.nome}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="form-group col-md-6">
 									<label for="cc-payment" class="control-label mb-1">Categoria Produto ou Serviço</label>
 									<div>
 										<h:selectOneMenu value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain}" required="true" class="form-control">
@@ -1035,44 +1048,15 @@
 										</h:selectOneMenu>
 									</div>
 								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="form-group col-md-10">
-									<label for="cc-payment" class="control-label mb-1">Categoria</label>
-									<div>
-										<h:selectOneMenu value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain}" required="true" class="form-control">
-											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<label for="cc-payment" class="control-label mb-1">Valor</label>
-									<input id="cc-pament" name="cc-payment" type="text"
-										class="form-control" aria-required="true" aria-invalid="false"
-										value="" placeholder="R$"/>
+									<h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" pt:placeholder="R$ " />
 								</div>
-							</div>
-
-							<div class="row form-group">
 								<div class="col-3">
 									<div class="form-group">
 										<label for="cc-exp" class="control-label mb-1">Data</label> 
-										<input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" placeholder="DD/MM/AAAA" autocomplete="cc-exp"/> 
+										<h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
 										<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
-									</div>
-								</div>
-								<div class="col-9">
-									<label for="x_card_code" class="control-label mb-1">Security
-										code</label>
-									<div class="input-group">
-										<input id="x_card_code" name="x_card_code" type="tel"
-											class="form-control cc-cvc" value="" data-val="true"
-											data-val-required="Please enter the security code"
-											data-val-cc-cvc="Please enter a valid security code"
-											autocomplete="off"/>
-
 									</div>
 								</div>
 							</div>
@@ -1091,8 +1075,7 @@
 								</div>
 
 								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Canal
-										de Pagamento</label>
+									<label for="cc-payment" class="control-label mb-1">Situação do Pagamento</label>
 									<div class="">
 										<select name="select" id="select" class="form-control">
 											<option value="0">Selecione</option>
@@ -1104,9 +1087,15 @@
 							</div>
 
 							<div class="row form-group">
-								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Tipo
-										de Despesa</label>
+								<div class="col-2">
+									<div class="form-group">
+										<label for="cc-exp" class="control-label mb-1">Data do Pagamneto</label> 
+										<h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
+										<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+									</div>
+								</div>
+								<div class="form-group col-md-5">
+									<label for="cc-payment" class="control-label mb-1">Fonte de Pagamento</label>
 									<div class="">
 										<select name="select" id="select" class="form-control">
 											<option value="0">Selecione</option>
@@ -1116,9 +1105,8 @@
 										</select>
 									</div>
 								</div>
-								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Situação
-										da Despesa</label>
+								<div class="form-group col-md-5">
+									<label for="cc-payment" class="control-label mb-1">Canal de Pagamento</label>
 									<div class="">
 										<select name="select" id="select" class="form-control">
 											<option value="0">Selecione</option>

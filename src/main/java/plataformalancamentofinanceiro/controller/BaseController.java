@@ -24,6 +24,7 @@ public class BaseController implements Serializable {
 		this.baseService = new BaseService();
 		this.baseView = new BaseView();
 		this.baseView.setGestaoCategoriaProdutoServicoDomainList(baseService.getGestaoCategoriaProdutoServicoRepository().findAll());
+		this.baseView.setGestaoProdutoServicoDomainList(baseService.getGestaoProdutoServicoRepository().findAll());
 	}
 	
 	public String recuperarValorSelectView() {

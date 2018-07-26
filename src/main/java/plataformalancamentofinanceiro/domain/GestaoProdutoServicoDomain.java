@@ -16,4 +16,26 @@ public class GestaoProdutoServicoDomain extends BaseDomain {
 	@GeneratedValue
 	@Column(name = "CODIGO", nullable = false)
 	private Long codigo;
+	
+	@Column(name = "NOME", nullable = false)
+	private String nome;
+	
+	public GestaoProdutoServicoDomain() { }
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 }
