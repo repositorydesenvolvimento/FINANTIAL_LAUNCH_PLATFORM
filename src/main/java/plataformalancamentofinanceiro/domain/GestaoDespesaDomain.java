@@ -61,6 +61,59 @@ import plataformalancamentofinanceiro.enumeration.TipoSituacaoPagamentoEnumerati
  * 			- Sao despesas que tem perioticidade com menos de 6 meses
  * 
  * # Nota: Entende-se por Favorecido a Pessoa do Sistema (fisica ou juridica) ao qual devera ser quitado uma parcela
+ * 
+ * Despesas Fixas
+
+Favorecido:            Sinagoga 
+Produto ou Serviço:    Mensalidade Sinagogal
+Categoria Despesa:     Instituição Religiosa
+Valor Previsto:        R$ 155,00
+Data Vencimento:       10/07/2018
+Tipo de Despesa:       Despesa Fixa
+Fonte de Pagamento:    Banco Santander 
+Situação:              Aguardando Pagamento
+Data Pagamento:        10/07/2018   
+Canal Pagamento:       Internet Bancking   
+Despesa Fechada:       Sim                 // Quando o Processamento estiver Concluido
+
+Favorecido:            Banco Santander
+Produto ou Serviço:    Fatura Cartão de Crédito
+Categoria Despesa:     Cartão de Crédito
+Valor Previsto:        R$ 1000,00
+Data Vencimento:       20/08/2018
+Tipo de Despesa:       Despesa Fixa
+Fonte de Pagamento:    Banco Santander 
+Situação:              Aguardando Pagamento
+Data Pagamento:        10/07/2018   
+Canal Pagamento:       Internet Bancking   
+Despesa Fechada:       Sim                 // Quando o Processamento estiver Concluido
+
+Favorecido:            DFTRANS
+Produto ou Serviço:    Mensalidade Cartão DFTRANS
+Categoria Despesa:     Transporte Público - Passagem
+Valor Previsto:        R$ 300,00
+Data Vencimento:       20/08/2018
+Tipo de Despesa:       Despesa Fixa
+Fonte de Pagamento:    Banco Caixa Econômica Federal
+Situação:              Aguardando Pagamento
+Data Pagamento:        10/07/2018   
+Canal Pagamento:       Internet Bancking   
+Despesa Fechada:       Sim                 // Quando o Processamento estiver Concluido
+
+Favorecido:            TIM Telecomunicações
+Produto ou Serviço:    Serviços de Internet Telefônia Móvel
+Categoria Despesa:     Internet e Telefônia Móvel
+Valor Previsto:        R$ 55,00
+Data Vencimento:       20/08/2018
+Tipo de Despesa:       Despesa Fixa
+Fonte de Pagamento:    Banco Santander
+Situação:              Aguardando Pagamento
+Data Pagamento:        NULL   
+Canal Pagamento:       Internet Bancking   
+Despesa Fechada:       Não                 // Quando o Processamento estiver Concluido
+
+Despesas Variáveis
+
  */
 @Entity
 @Table(name = "TB_GESTAO_DESPESA")

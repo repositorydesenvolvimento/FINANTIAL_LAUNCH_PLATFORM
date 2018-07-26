@@ -1027,28 +1027,27 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Produto ou Serviço</label>
+									<label for="cc-payment" class="control-label mb-1">Categoria Produto ou Serviço</label>
 									<div>
-										<h:selectOneMenu value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
-											<f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado}" itemLabel="#{gestaoPessoaResultado.nome}" />
+										<h:selectOneMenu value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain}" required="true" class="form-control">
+											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+											<f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
 										</h:selectOneMenu>
 									</div>
 								</div>
 							</div>
 
 							<div class="row form-group">
-								<div class="form-group col-md-8">
+								<div class="form-group col-md-10">
 									<label for="cc-payment" class="control-label mb-1">Categoria</label>
-									<div class="">
-										<select name="select" id="select" class="form-control">
-											<option value="0">Selecione</option>
-											<option value="1">Mensalidade</option>
-											<option value="2">Fatura</option>
-										</select>
+									<div>
+										<h:selectOneMenu value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain}" required="true" class="form-control">
+											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+											<f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
+										</h:selectOneMenu>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-2">
 									<label for="cc-payment" class="control-label mb-1">Valor</label>
 									<input id="cc-pament" name="cc-payment" type="text"
 										class="form-control" aria-required="true" aria-invalid="false"
@@ -1059,14 +1058,9 @@
 							<div class="row form-group">
 								<div class="col-3">
 									<div class="form-group">
-										<label for="cc-exp" class="control-label mb-1">Data</label> <input
-											id="cc-exp" name="cc-exp" type="tel"
-											class="form-control cc-exp" value="" data-val="true"
-											data-val-required="Please enter the card expiration"
-											data-val-cc-exp="Please enter a valid month and year"
-											placeholder="MM / YY" autocomplete="cc-exp"/> <span
-											class="help-block" data-valmsg-for="cc-exp"
-											data-valmsg-replace="true"></span>
+										<label for="cc-exp" class="control-label mb-1">Data</label> 
+										<input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" placeholder="DD/MM/AAAA" autocomplete="cc-exp"/> 
+										<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
 									</div>
 								</div>
 								<div class="col-9">
