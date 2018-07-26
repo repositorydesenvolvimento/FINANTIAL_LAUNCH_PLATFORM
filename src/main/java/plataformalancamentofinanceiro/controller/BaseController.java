@@ -5,7 +5,11 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
+import plataformalancamentofinanceiro.enumeration.TipoCanalPagamentoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoDespesaEnumeration;
 import plataformalancamentofinanceiro.enumeration.TipoFormaPagamentoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoSituacaoEnumeration;
+import plataformalancamentofinanceiro.enumeration.TipoSituacaoPagamentoEnumeration;
 import plataformalancamentofinanceiro.service.BaseService;
 import plataformalancamentofinanceiro.utility.ConstantantesUtility;
 import plataformalancamentofinanceiro.view.BaseView;
@@ -33,6 +37,22 @@ public class BaseController implements Serializable {
 	
 	public TipoFormaPagamentoEnumeration[] recuperarTipoFormaPagamentoEnumeration() {
 		return TipoFormaPagamentoEnumeration.values();
+	}
+	
+	public TipoCanalPagamentoEnumeration[] recuperarTipoCanalPagamentoEnumeration() {
+		return TipoCanalPagamentoEnumeration.values();
+	}
+	
+	public TipoSituacaoEnumeration[] recuperarTipoSituacaoEnumeration() {
+		return TipoSituacaoEnumeration.values();
+	}
+	
+	public TipoDespesaEnumeration[] recuperarTipoDespesaEnumeration() {
+		return TipoDespesaEnumeration.values();
+	}
+	
+	public TipoSituacaoPagamentoEnumeration[] recuperarTipoSituacaoPagamentoEnumeration() {
+		return TipoSituacaoPagamentoEnumeration.values();
 	}
 
 	public BaseView getBaseView() {

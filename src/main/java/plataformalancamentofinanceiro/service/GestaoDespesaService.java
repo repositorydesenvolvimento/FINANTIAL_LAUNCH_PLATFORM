@@ -15,6 +15,11 @@ public class GestaoDespesaService extends BaseService {
 		this.gestaoDespesaRepository = new GestaoDespesaRepository();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public void persist(GestaoDespesaDomain gestaoDespesaDomain) {
+		gestaoDespesaRepository.persist(gestaoDespesaDomain);
+	}
+	
 	public List<GestaoDespesaDomain> findAll() {
 		return gestaoDespesaRepository.findAll();
 	}

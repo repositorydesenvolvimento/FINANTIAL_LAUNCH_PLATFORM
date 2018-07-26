@@ -24,6 +24,11 @@ public class GestaoDespesasController extends BaseController {
 		this.gestaoDespesaService = new GestaoDespesaService();
 	}
 	
+	public String persist() {
+		gestaoDespesaService.persist(gestaoDespesasView.getGestaoDespesaDomain());
+		return null;
+	}
+	
 	public List<GestaoDespesaDomain> findAll() {
 		return gestaoDespesaService.findAll();
 	}
