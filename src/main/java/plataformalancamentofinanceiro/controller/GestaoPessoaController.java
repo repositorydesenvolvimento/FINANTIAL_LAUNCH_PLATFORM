@@ -16,10 +16,11 @@ public class GestaoPessoaController extends BaseController {
 	private static final long serialVersionUID = 1L;
 	
 	private GestaoPessoaView gestaoPessoaView;
-	
+
 	private GestaoPessoaService gestaoPessoaService;
 	
 	public GestaoPessoaController() { 
+		this.gestaoPessoaView = new GestaoPessoaView();
 		this.gestaoPessoaService = new GestaoPessoaService();
 	}
 	
