@@ -11,6 +11,7 @@ public class EntityManagerConnectionTest {
 	public static void entityManagerConnection() {
 		EntityManagerConnection entityManagerConnection = new EntityManagerConnection();
 			System.out.println(entityManagerConnection.entityManagerConnection());
+			System.out.println("Teste Finalizado!");
 	}
 	
 }

@@ -4,6 +4,17 @@
   <artifactId>PLATAFORMA_LANCAMENTO_FINANCEIRO</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+
+	<properties>
+		<hibernate.show_sql>true</hibernate.show_sql>
+		<hibernate.format_sql>false</hibernate.format_sql>
+		<hibernate.generate_statistics>false</hibernate.generate_statistics>
+		<hibernate.cache.region.factory_class>org.hibernate.cache.impl.NoCachingRegionFactory</hibernate.cache.region.factory_class>
+		<hibernate.cache.use_second_level_cache>false</hibernate.cache.use_second_level_cache>
+		<hibernate.cache.use_structured_entries>true</hibernate.cache.use_structured_entries>
+		<hibernate.cache.use_query_cache>false</hibernate.cache.use_query_cache>
+		<hibernate.use_sql_comments>true</hibernate.use_sql_comments>
+	</properties>
   
   <dependencies>
   

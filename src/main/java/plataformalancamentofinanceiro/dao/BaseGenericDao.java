@@ -39,7 +39,7 @@ public class BaseGenericDao<T> implements Serializable {
 				getEntityManager().persist(object);
 			getCommitTransaction();
 		}catch(Exception e) {
-			getRollbackTransaction();
+			System.out.println(e.getMessage());
 		}
 	}
 	

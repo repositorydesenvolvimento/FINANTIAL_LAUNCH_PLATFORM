@@ -1025,14 +1025,15 @@
                             </button>
                         </div>
                     <div class="modal-body">
+                        <form action="" method="post" novalidate="novalidate">
 
                             <div class="row form-group">
                                 <div class="form-group col-md-6">
                                     <label for="cc-payment" class="control-label mb-1">Favorecido</label>
                                     <div>
-                                        <h:selectOneMenu id="favorecido" value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain.codigo}" required="true" class="form-control">
+                                        <h:selectOneMenu id="favorecido" value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
-                                            <f:selectItems value="#{gestaoPessoaController.findAll()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado.codigo}" itemLabel="#{gestaoPessoaResultado.nome}" />
+                                            <f:selectItems value="#{gestaoPessoaController.findAll()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado}" itemLabel="#{gestaoPessoaResultado.nome}" />
                                         </h:selectOneMenu>
                                         <h:message for="favorecido" errorStyle="color:darkred;font-size:11px;" />
                                     </div>
@@ -1040,40 +1041,34 @@
                                 <div class="col-md-6">
                                     <label for="cc-payment" class="control-label mb-1">Categoria da Despesa</label>
                                     <div>
-                                        <h:selectOneMenu id="categoriaDespesa" value="#{baseController.baseView.gestaoProdutoServicoDomain.codigo}" required="true" class="form-control">
+                                        <h:selectOneMenu value="#{baseController.baseView.gestaoProdutoServicoDomain}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-                                            <f:selectItems value="#{baseController.baseView.gestaoProdutoServicoDomainList}" var="gestaoProdutoResultado" itemValue="#{gestaoProdutoResultado.codigo}" itemLabel="#{gestaoProdutoResultado.nome}" />
+                                            <f:selectItems value="#{baseController.baseView.gestaoProdutoServicoDomainList}" var="gestaoProdutoResultado" itemValue="#{gestaoProdutoResultado}" itemLabel="#{gestaoProdutoResultado.nome}" />
                                         </h:selectOneMenu>
                                     </div>
                                 </div>
-                                <h:message for="categoriaDespesa" errorStyle="color:darkred;font-size:11px;" />
                             </div>
 
                             <div class="row form-group">
                                 <div class="form-group col-md-6">
                                     <label for="cc-payment" class="control-label mb-1">Categoria Produto ou Serviço</label>
                                     <div>
-                                        <h:selectOneMenu id="categoriaProdutoServico" value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain.codigo}" required="true" class="form-control">
+                                        <h:selectOneMenu value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-                                            <f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado.codigo}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
+                                            <f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
                                         </h:selectOneMenu>
                                     </div>
-                                    <h:message for="categoriaProdutoServico" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
                                 <div class="col-md-3">
                                     <label for="cc-payment" class="control-label mb-1">Valor das Despesa</label>
-                                    <h:inputText id="valorTotalDespesa" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" pt:placeholder="R$ " />
-                                    <h:message for="valorTotalDespesa" errorStyle="color:darkred;font-size:11px;" />
+                                    <h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" pt:placeholder="R$ " />
                                 </div>
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label for="cc-exp" class="control-label mb-1">Data de Vencimento</label> 
-                                        <h:inputText id="dataVencimento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.dataVencimentoDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp">
-                                        	<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
-                                        </h:inputText>
+                                        <h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.dataVencimentoDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
                                         <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
                                     </div>
-                                    <h:message for="dataVencimento" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
                             </div>
 
@@ -1081,61 +1076,55 @@
                                 <div class="form-group col-md-6">
                                     <label for="cc-payment" class="control-label mb-1">Tipo de Despesa</label>
                                     <div class="">
-                                        <h:selectOneMenu id="tipoDespesa" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoDespesaEnumeration}" required="true" class="form-control">
+                                        <h:selectOneMenu value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoDespesaEnumeration}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
                                             <f:selectItems value="#{baseController.recuperarTipoDespesaEnumeration()}" var="tipoDespesaResultado" itemValue="#{tipoDespesaResultado}" itemLabel="#{tipoDespesaResultado}" />
                                         </h:selectOneMenu>
                                     </div>
-                                    <h:message for="tipoDespesa" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="cc-payment" class="control-label mb-1">Situação do Pagamento</label>
                                     <div class="">
-                                        <h:selectOneMenu id="situacaoPagamento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoSituacaoPagamentoEnumeration}" required="true" class="form-control">
+                                        <h:selectOneMenu value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoSituacaoPagamentoEnumeration}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
                                             <f:selectItems value="#{baseController.recuperarTipoSituacaoPagamentoEnumeration()}" var="tipoSituacaoPagamentoResultado" itemValue="#{tipoSituacaoPagamentoResultado}" itemLabel="#{tipoSituacaoPagamentoResultado}" />
                                         </h:selectOneMenu>
                                     </div>
-                                    <h:message for="situacaoPagamento" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-2">
                                     <div class="form-group">
-                                        <label for="cc-exp" class="control-label mb-1">Data do Pagamneto</label>
-                                        <h:inputText id="dataPagamento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.dataPagamentoDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp">
-                                        	<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
-                                        </h:inputText>
+                                        <label for="cc-exp" class="control-label mb-1">Data do Pagamneto</label> 
+                                        <h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
                                         <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
                                     </div>
-                                    <h:message for="dataPagamento" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="cc-payment" class="control-label mb-1">Fonte de Pagamento</label>
                                     <div class="">
-                                        <h:selectOneMenu id="fontePagamento" value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain.codigo}" required="true" class="form-control">
+                                        <h:selectOneMenu value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
-                                            <f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaInstituicaoFinanceiraResultado" itemValue="#{gestaoPessoaInstituicaoFinanceiraResultado.codigo}" itemLabel="#{gestaoPessoaInstituicaoFinanceiraResultado.nome}" />
+                                            <f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaInstituicaoFinanceiraResultado" itemValue="#{gestaoPessoaInstituicaoFinanceiraResultado}" itemLabel="#{gestaoPessoaInstituicaoFinanceiraResultado.nome}" />
                                         </h:selectOneMenu>
                                     </div>
-                                    <h:message for="fontePagamento" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="cc-payment" class="control-label mb-1">Canal de Pagamento</label>
                                     <div class="">
-                                        <h:selectOneMenu id="canalPagamento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoCanalPagamentoEnumeration}" required="true" class="form-control">
+                                        <h:selectOneMenu value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoCanalPagamentoEnumeration}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
                                             <f:selectItems value="#{baseController.recuperarTipoCanalPagamentoEnumeration()}" var="recuperarTipoCanalPagamentoResultado" itemValue="#{recuperarTipoCanalPagamentoResultado}" itemLabel="#{recuperarTipoCanalPagamentoResultado.descricao}" />
                                         </h:selectOneMenu>
                                     </div>
-                                    <h:message for="canalPagamento" errorStyle="color:darkred;font-size:11px;" />
                                 </div>
                             </div>
                     <div>
                         <h:commandButton action="#{gestaoDespesaController.persist()}" value="Cadastrar" class="btn btn-lg btn-info btn-block" styleClass="btn-primary" />
                     </div>
+                    </form>
                 </div>
                 </div>
                 </div>

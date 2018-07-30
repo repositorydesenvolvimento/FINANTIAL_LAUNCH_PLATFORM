@@ -1,12 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     
     <!-- Required meta tags-->
@@ -39,1088 +38,123 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all"/>
-	
+    
 </h:head> 
 
 <body class="animsition">
 
 <h:form prependId="false">
 
-    <div class="page-wrapper">
-       
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.xhtml">
-<!--                             <img src="images/icon/logo.png" alt="CoolAdmin" /> -->
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
+
+                            <div class="row form-group">
+                                <div class="form-group col-md-6">
+                                    <label for="cc-payment" class="control-label mb-1">Favorecido</label>
+                                    <div>
+                                        <h:selectOneMenu id="favorecido" value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain.codigo}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{gestaoPessoaController.findAll()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado}" itemLabel="#{gestaoPessoaResultado.nome}" />
+                                        </h:selectOneMenu>
+                                        <h:message for="favorecido" errorStyle="color:darkred;font-size:11px;" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cc-payment" class="control-label mb-1">Categoria da Despesa</label>
+                                    <div>
+                                        <h:selectOneMenu id="categoriaDespesa" value="#{baseController.baseView.gestaoProdutoServicoDomain.codigo}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{baseController.baseView.gestaoProdutoServicoDomainList}" var="gestaoProdutoResultado" itemValue="#{gestaoProdutoResultado}" itemLabel="#{gestaoProdutoResultado.nome}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <h:message for="categoriaDespesa" errorStyle="color:darkred;font-size:11px;" />
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="form-group col-md-6">
+                                    <label for="cc-payment" class="control-label mb-1">Categoria Produto ou Serviço</label>
+                                    <div>
+                                        <h:selectOneMenu id="categoriaProdutoServico" value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain.codigo}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:message for="categoriaProdutoServico" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cc-payment" class="control-label mb-1">Valor das Despesa</label>
+                                    <h:inputText id="valorTotalDespesa" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" pt:placeholder="R$ " />
+                                    <h:message for="valorTotalDespesa" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="cc-exp" class="control-label mb-1">Data de Vencimento</label> 
+                                        <h:inputText id="dataVencimento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.dataVencimentoDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
+                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <h:message for="dataVencimento" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="form-group col-md-6">
+                                    <label for="cc-payment" class="control-label mb-1">Tipo de Despesa</label>
+                                    <div class="">
+                                        <h:selectOneMenu id="tipoDespesa" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoDespesaEnumeration}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{baseController.recuperarTipoDespesaEnumeration()}" var="tipoDespesaResultado" itemValue="#{tipoDespesaResultado}" itemLabel="#{tipoDespesaResultado}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:message for="tipoDespesa" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="cc-payment" class="control-label mb-1">Situação do Pagamento</label>
+                                    <div class="">
+                                        <h:selectOneMenu id="situacaoPagamento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoSituacaoPagamentoEnumeration}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{baseController.recuperarTipoSituacaoPagamentoEnumeration()}" var="tipoSituacaoPagamentoResultado" itemValue="#{tipoSituacaoPagamentoResultado}" itemLabel="#{tipoSituacaoPagamentoResultado}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:message for="situacaoPagamento" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="cc-exp" class="control-label mb-1">Data do Pagamneto</label> 
+                                        <h:inputText id="dataPagamento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
+                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <h:message for="dataPagamento" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="cc-payment" class="control-label mb-1">Fonte de Pagamento</label>
+                                    <div class="">
+                                        <h:selectOneMenu id="fontePagamento" value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain.codigo}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaInstituicaoFinanceiraResultado" itemValue="#{gestaoPessoaInstituicaoFinanceiraResultado}" itemLabel="#{gestaoPessoaInstituicaoFinanceiraResultado.nome}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:message for="fontePagamento" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="cc-payment" class="control-label mb-1">Canal de Pagamento</label>
+                                    <div class="">
+                                        <h:selectOneMenu id="canalPagamento" value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoCanalPagamentoEnumeration}" required="true" class="form-control">
+                                            <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
+                                            <f:selectItems value="#{baseController.recuperarTipoCanalPagamentoEnumeration()}" var="recuperarTipoCanalPagamentoResultado" itemValue="#{recuperarTipoCanalPagamentoResultado}" itemLabel="#{recuperarTipoCanalPagamentoResultado.descricao}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <h:message for="canalPagamento" errorStyle="color:darkred;font-size:11px;" />
+                                </div>
+                            </div>
+                    <div>
+                        <h:commandButton action="#{gestaoDespesaController.persist()}" value="Cadastrar" class="btn btn-lg btn-info btn-block" styleClass="btn-primary" />
+                        <h:commandLink action="#{gestaoDespesaController.persist()}" value="ok" />
                     </div>
-                </div>
-            </div>
-            
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Principal</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="index.xhtml">Principal</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li>
-                            <a href="paginaGestaoDespesaCadastrar.html">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
 
-        <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
-            <div class="logo">
-                <a href="#">
-                	<a href="index.xhtml">Plataforma de Lançamento</a>
-<!--                     <img src="images/icon/logo.png" alt="Cool Admin" /> -->
-                </a>
-            </div>
-            <div class="menu-sidebar__content js-scrollbar1">
-                <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Principal</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.xhtml">Principal</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Gestão de Despesas</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="paginaGestaoDespesaConsultar.xhtml">Consultar Despesas</a>
-                                </li>
-                                <li>
-                                    <a href="paginaGestaoDespesaCadastrar.html">Cadastrar Despesas</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="paginaGestaoDespesaCadastrar.html">
-                                <i class="far fa-check-square"></i>Gestão de Despesas</a>
-                        </li>
-                        <li>
-                            <a href="paginaGestaoDespesaConsultar.xhtml">
-                                <i class="far fa-check-square"></i>Gestão de Despesas Consultar</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-        <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-                            <form class="form-header" action="">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Pesquise por uma Funcionalidade da Plataforma" />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
-                            
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Michelle Moreno</h6>
-                                                    <p>Have sent a photo</p>
-                                                    <span class="time">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
-                                                    <span class="time">Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, April 12,,2018</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="José Quintin" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">José Quintin</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="José Quintin" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">José Quintin</a>
-                                                    </h5>
-                                                    <span class="email">José Quintindoe@example.com</span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- HEADER DESKTOP-->
-
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">
-                                    	<h:outputText value="#{gestaoDespesaController.gestaoDespesasView.labelDemonstrativo()}" />
-                                    </h2>
-                                    <button type="button" data-toggle="modal" data-target="#cadastroDespesaModal" class="au-btn au-btn-icon au-btn--blue">
-                                        <i class="zmdi zmdi-plus"></i>Novo Lançamento Financeiro
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row m-t-25">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c1">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>
-                                                	R$ 12.000,00
-                                                </h2>
-                                                <span>
-                                                	<h:commandLink action="index.xhtml" value="Receitas" />
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>R$ 388,68</h2>
-                                                <span>Despesas Variáveis</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>R$ 1.086,00</h2>
-                                                <span>Despesas Fixas</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>R$ 10.060,36</h2>
-                                                <span>Investimentos</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart4"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- BEGIN - CONSULTA DE DESPESAS -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Movimentações Financeiras</h2>
-                                <div class="table-responsive table--no-card m-b-250">
-	                                   <h:dataTable value="#{gestaoDespesaController.findAll()}" var="gestaoDespesaControllerResult" class="table table-borderless table-striped table-earning">
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Número da Parcela</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.numeroParcela}" />
-	                                   	  </h:column>	
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Favorecido</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoPessoaDomain.nome}" />
-	                                   	  </h:column>	
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Categoria</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.gestaoCategoriaProdutoServicoDomain.nome}" />
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Valor</f:facet>
-	                                   	  	<h:outputLabel value="R$ " rendered="#{gestaoDespesaControllerResult.valorPrevisto != null}"/>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.valorPrevisto}" />
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Vencimento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataVencimentoDespesa}">
-	                                   	  		<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
-	                                   	  	</h:outputLabel>
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Pagamento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.dataPagamentoDespesa}">
-	                                   	  		<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
-	                                   	  	</h:outputLabel>
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Tipo da Despesa</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoDespesaEnumeration.name()}" />
-	                                   	  </h:column>
-	                                   	  
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Fonte Pagamento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoFormaPagamentoEnumeration.name()}" />
-	                                   	  </h:column>	
-	                                   <h:column>
-	                                   	  	<f:facet name="header">Canal Pagamento</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoCanalPagamentoEnumeration.sigla}" />
-	                                   	  </h:column>
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Situação</f:facet>
-	                                   	  	<h:outputLabel value="#{gestaoDespesaControllerResult.tipoSituacaoPagamentoEnumeration.name()}" />
-	                                   	  </h:column>
-	                                   	  <h:column>
-	                                   	  	<f:facet name="header">Ações</f:facet>
-	                                   	  </h:column>
-	                                   </h:dataTable>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END - CONSULTA DE DESPESAS -->
-                        
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <h2 class="title-1 m-b-25">Movimentações Financeiras</h2>
-                                <div class="table-responsive table--no-card m-b-40">
-                                    <table class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>Data</th>
-                                                <th>Código</th>
-                                                <th>Produto/Serviço</th>
-                                                <th class="text-right">Valor</th>
-                                                <th class="text-right">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>100398</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="text-right">$999.00</td>
-                                                <td class="text-right">$999.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-28 01:22</td>
-                                                <td>100397</td>
-                                                <td>Samsung S8 Black</td>
-                                                <td class="text-right">$756.00</td>
-                                                <td class="text-right">$756.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-27 02:12</td>
-                                                <td>100396</td>
-                                                <td>Game Console Controller</td>
-                                                <td class="text-right">$22.00</td>
-                                                <td class="text-right">$44.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-26 23:06</td>
-                                                <td>100395</td>
-                                                <td>iPhone X 256Gb Black</td>
-                                                <td class="text-right">$1199.00</td>
-                                                <td class="text-right">$1199.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-25 19:03</td>
-                                                <td>100393</td>
-                                                <td>USB 3.0 Cable</td>
-                                                <td class="text-right">$10.00</td>
-                                                <td class="text-right">$30.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>100392</td>
-                                                <td>Smartwatch 4.0 LTE Wifi</td>
-                                                <td class="text-right">$199.00</td>
-                                                <td class="text-right">$1494.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-24 19:10</td>
-                                                <td>100391</td>
-                                                <td>Camera C430W 4k</td>
-                                                <td class="text-right">$699.00</td>
-                                                <td class="text-right">$699.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-22 00:43</td>
-                                                <td>100393</td>
-                                                <td>USB 3.0 Cable</td>
-                                                <td class="text-right">$10.00</td>
-                                                <td class="text-right">$30.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <h2 class="title-1 m-b-25">Receitas</h2>
-                                <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-                                    <div class="au-card-inner">
-                                        <div class="table-responsive">
-                                            <table class="table table-top-countries">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Banco Santander</td>
-                                                        <td class="text-right">R$ 1.110,96</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Banco do Brasil</td>
-                                                        <td class="text-right">R$ 754,00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>CEF</td>
-                                                        <td class="text-right">$46,399.22</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Banco Cetelem</td>
-                                                        <td class="text-right">$46,399.22</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
-                                        <div class="bg-overlay bg-overlay--blue"></div>
-                                        <h3>
-                                            <i class="zmdi zmdi-account-calendar"></i>Mês de Referência: Julho de 2018</h3>
-                                        <button class="au-btn-plus">
-                                            <i class="zmdi zmdi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <div class="au-task js-list-load">
-                                        <div class="au-task__title">
-                                            <p>Próximos Vencimentos</p>
-                                        </div>
-                                        <div class="au-task-list js-scrollbar3">
-                                            <div class="au-task__item au-task__item--danger">
-                                                <div class="au-task__item-inner">
-                                                    <h5 class="task">
-                                                        <a href="#">Realizar Fechamento Anual 2018</a>
-                                                    </h5>
-                                                    <span class="time">10:00 AM</span>
-                                                </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--warning">
-                                                <div class="au-task__item-inner">
-                                                    <h5 class="task">
-                                                        <a href="#">Create new task for Dashboard</a>
-                                                    </h5>
-                                                    <span class="time">11:00 AM</span>
-                                                </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--primary">
-                                                <div class="au-task__item-inner">
-                                                    <h5 class="task">
-                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
-                                                    </h5>
-                                                    <span class="time">02:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--success">
-                                                <div class="au-task__item-inner">
-                                                    <h5 class="task">
-                                                        <a href="#">Create new task for Dashboard</a>
-                                                    </h5>
-                                                    <span class="time">03:30 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--danger js-load-item">
-                                                <div class="au-task__item-inner">
-                                                    <h5 class="task">
-                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
-                                                    </h5>
-                                                    <span class="time">10:00 AM</span>
-                                                </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--warning js-load-item">
-                                                <div class="au-task__item-inner">
-                                                    <h5 class="task">
-                                                        <a href="#">Create new task for Dashboard</a>
-                                                    </h5>
-                                                    <span class="time">11:00 AM</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="au-task__footer">
-                                            <button class="au-btn au-btn-load js-load-btn">Gerenciar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
-                                        <div class="bg-overlay bg-overlay--blue"></div>
-                                        <h3>
-                                            <i class="zmdi zmdi-comment-text"></i>Empréstimos</h3>
-                                        <button class="au-btn-plus">
-                                            <i class="zmdi zmdi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <div class="au-inbox-wrap js-inbox-wrap">
-                                        <div class="au-message js-list-load">
-                                            <div class="au-message__noti">
-                                                <p>You Have
-                                                    <span>2</span>
-
-                                                    new messages
-                                                </p>
-                                            </div>
-                                            <div class="au-message-list">
-                                                <div class="au-message__item unread">
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap">
-                                                                <div class="avatar">
-                                                                    <img src="images/icon/avatar-02.jpg" alt="José Quintin "/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">José Quintin </h5>
-                                                                <p>Have sent a photo</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="au-message__item-time">
-                                                            <span>12 Min ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="au-message__item unread">
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap online">
-                                                                <div class="avatar">
-                                                                    <img src="images/icon/avatar-03.jpg" alt="Nicholas Martinez"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Nicholas Martinez</h5>
-                                                                <p>You are now connected on message</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="au-message__item-time">
-                                                            <span>11:00 PM</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="au-message__item">
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap online">
-                                                                <div class="avatar">
-                                                                    <img src="images/icon/avatar-04.jpg" alt="Michelle Sims"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Michelle Sims</h5>
-                                                                <p>Lorem ipsum dolor sit amet</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="au-message__item-time">
-                                                            <span>Yesterday</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="au-message__item">
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap">
-                                                                <div class="avatar">
-                                                                    <img src="images/icon/avatar-05.jpg" alt="Michelle Sims"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Michelle Sims</h5>
-                                                                <p>Purus feugiat finibus</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="au-message__item-time">
-                                                            <span>Sunday</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="au-message__item js-load-item">
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap online">
-                                                                <div class="avatar">
-                                                                    <img src="images/icon/avatar-04.jpg" alt="Michelle Sims"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Michelle Sims</h5>
-                                                                <p>Lorem ipsum dolor sit amet</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="au-message__item-time">
-                                                            <span>Yesterday</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="au-message__item js-load-item">
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap">
-                                                                <div class="avatar">
-                                                                    <img src="images/icon/avatar-05.jpg" alt="Michelle Sims"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Michelle Sims</h5>
-                                                                <p>Purus feugiat finibus</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="au-message__item-time">
-                                                            <span>Sunday</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__footer">
-                                                <button class="au-btn au-btn-load js-load-btn">Gerenciar</button>
-                                            </div>
-                                        </div>
-                                        <div class="au-chat">
-                                            <div class="au-chat__title">
-                                                <div class="au-chat-info">
-                                                    <div class="avatar-wrap online">
-                                                        <div class="avatar avatar--small">
-                                                            <img src="images/icon/avatar-02.jpg" alt="José Quintin "/>
-                                                        </div>
-                                                    </div>
-                                                    <span class="nick">
-                                                        <a href="#">José Quintin </a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="au-chat__content">
-                                                <div class="recei-mess-wrap">
-                                                    <span class="mess-time">12 Min ago</span>
-                                                    <div class="recei-mess__inner">
-                                                        <div class="avatar avatar--tiny">
-                                                            <img src="images/icon/avatar-02.jpg" alt="José Quintin "/>
-                                                        </div>
-                                                        <div class="recei-mess-list">
-                                                            <div class="recei-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                                            <div class="recei-mess">Donec tempor, sapien ac viverra</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="send-mess-wrap">
-                                                    <span class="mess-time">30 Sec ago</span>
-                                                    <div class="send-mess__inner">
-                                                        <div class="send-mess-list">
-                                                            <div class="send-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="au-chat-textfield">
-                                                <form class="au-form-icon">
-                                                    <input class="au-input au-input--full au-input--h65" type="text" placeholder="Type a message"/>
-                                                    <button class="au-input-icon">
-                                                        <i class="zmdi zmdi-camera"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Todos os Direitos Reservados <a href="https://colorlib.com">Plataforma de Lançamento Financeiro</a> - 2018</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
-        </div>
-
-		<!-- modal scroll -->
-			<div class="modal fade" id="cadastroDespesaModal" style=" margin-left: 10%; width: 80%;">
-				<div class="modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="scrollmodalLabel">Cadastro de Despesas Fixas</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true"></span>
-							</button>
-						</div>
-					<div class="modal-body">
-						<form action="" method="post" novalidate="novalidate">
-
-							<div class="row form-group">
-								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Favorecido</label>
-									<div>
-										<h:selectOneMenu value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
-											<f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{gestaoPessoaController.findAll()}" var="gestaoPessoaResultado" itemValue="#{gestaoPessoaResultado}" itemLabel="#{gestaoPessoaResultado.nome}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Categoria da Despesa</label>
-									<div>
-										<h:selectOneMenu value="#{baseController.baseView.gestaoProdutoServicoDomain}" required="true" class="form-control">
-											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{baseController.baseView.gestaoProdutoServicoDomainList}" var="gestaoProdutoResultado" itemValue="#{gestaoProdutoResultado}" itemLabel="#{gestaoProdutoResultado.nome}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Categoria Produto ou Serviço</label>
-									<div>
-										<h:selectOneMenu value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain}" required="true" class="form-control">
-											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<label for="cc-payment" class="control-label mb-1">Valor das Despesa</label>
-									<h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" pt:placeholder="R$ " />
-								</div>
-								<div class="col-3">
-									<div class="form-group">
-										<label for="cc-exp" class="control-label mb-1">Data de Vencimento</label> 
-										<h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.dataVencimentoDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
-										<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
-									</div>
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Tipo de Despesa</label>
-									<div class="">
-										<h:selectOneMenu value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoDespesaEnumeration}" required="true" class="form-control">
-											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{baseController.recuperarTipoDespesaEnumeration()}" var="tipoDespesaResultado" itemValue="#{tipoDespesaResultado}" itemLabel="#{tipoDespesaResultado}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-
-								<div class="form-group col-md-6">
-									<label for="cc-payment" class="control-label mb-1">Situação do Pagamento</label>
-									<div class="">
-										<h:selectOneMenu value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoSituacaoPagamentoEnumeration}" required="true" class="form-control">
-											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{baseController.recuperarTipoSituacaoPagamentoEnumeration()}" var="tipoSituacaoPagamentoResultado" itemValue="#{tipoSituacaoPagamentoResultado}" itemLabel="#{tipoSituacaoPagamentoResultado}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-2">
-									<div class="form-group">
-										<label for="cc-exp" class="control-label mb-1">Data do Pagamneto</label> 
-										<h:inputText value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.valorTotalDespesa}" class="form-control cc-exp" data-val="true" data-val-required="Campo Obrigatório" data-val-cc-exp="Campo Obrigatório" pt:placeholder="DD/MM/AAAA" autocomplete="cc-exp"/>
-										<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
-									</div>
-								</div>
-								<div class="form-group col-md-5">
-									<label for="cc-payment" class="control-label mb-1">Fonte de Pagamento</label>
-									<div class="">
-										<h:selectOneMenu value="#{gestaoPessoaController.gestaoPessoaView.gestaoPessoaDomain}" required="true" class="form-control">
-											<f:selectItem itemValue="#{gestaoPessoaController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{gestaoPessoaController.recuperarPessoaInstituicaoFinanceira()}" var="gestaoPessoaInstituicaoFinanceiraResultado" itemValue="#{gestaoPessoaInstituicaoFinanceiraResultado}" itemLabel="#{gestaoPessoaInstituicaoFinanceiraResultado.nome}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-								<div class="form-group col-md-5">
-									<label for="cc-payment" class="control-label mb-1">Canal de Pagamento</label>
-									<div class="">
-										<h:selectOneMenu value="#{gestaoDespesaController.gestaoDespesasView.gestaoDespesaDomain.tipoCanalPagamentoEnumeration}" required="true" class="form-control">
-											<f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-											<f:selectItems value="#{baseController.recuperarTipoCanalPagamentoEnumeration()}" var="recuperarTipoCanalPagamentoResultado" itemValue="#{recuperarTipoCanalPagamentoResultado}" itemLabel="#{recuperarTipoCanalPagamentoResultado.descricao}" />
-										</h:selectOneMenu>
-									</div>
-								</div>
-							</div>
-					<div>
-						<h:commandButton action="#{gestaoDespesaController.persist()}" value="Cadastrar" class="btn btn-lg btn-info btn-block" styleClass="btn-primary" />
-					</div>
-					</form>
-				</div>
-				</div>
-				</div>
-			</div>
-			<!-- end modal scroll -->
-
-    </div>
+</h:form>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
@@ -1143,12 +177,8 @@
     <script src="vendor/select2/select2.min.js">
     </script>
 
-    <!-- Main JS-->
     <script src="js/main.js"></script>
-
-</h:form>
 
 </body>
 
 </html>
-<!-- end document-->

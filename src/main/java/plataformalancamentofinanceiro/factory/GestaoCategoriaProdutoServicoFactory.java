@@ -29,11 +29,18 @@ public class GestaoCategoriaProdutoServicoFactory extends BaseFactory {
 		return gestaoCategoriaProdutoServicoDomain;
 	}
 	
+	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDevolucaoEmprestimos() {
+		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
+			gestaoCategoriaProdutoServicoDomain.setNome("Devolução de Empréstimos");
+		return gestaoCategoriaProdutoServicoDomain;
+	}
+	
 	public static List<GestaoCategoriaProdutoServicoDomain> findAll() {
 		List<GestaoCategoriaProdutoServicoDomain> gestaoCategoriaProdutoServicoDomainResult = new ArrayList<GestaoCategoriaProdutoServicoDomain>();
 			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoTelefoniaInternetBandaLarga());
 			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoTelefoniaInternetMovel());
 			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoDoacaoInstituicaoReligiosaJudaica());
+			gestaoCategoriaProdutoServicoDomainResult.add(gestaoCategoriaProdutoServicoDevolucaoEmprestimos());
 		return gestaoCategoriaProdutoServicoDomainResult;
 	}
 	

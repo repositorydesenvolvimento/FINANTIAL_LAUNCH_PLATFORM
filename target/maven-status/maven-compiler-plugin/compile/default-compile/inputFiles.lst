@@ -11,6 +11,7 @@
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/controller/GestaoPessoaController.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/dao/BaseDao.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/domain/GestaoDespesaDomain.java
+/home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/converter/BaseConverter.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/domain/GestaoProtocoloDomain.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/repository/GestaoDespesaRepository.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/enumeration/TipoSituacaoPagamentoEnumeration.java
@@ -19,6 +20,7 @@
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/view/GestaoPessoaView.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/test/EntityManagerConnectionTest.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/controller/GestaoDespesasController.java
+/home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/converter/GestaoPessoaDomainConverter.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/repository/BaseRepository.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/factory/BaseFactory.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/repository/GestaoProdutoServicoRepository.java

@@ -90,6 +90,50 @@ public class GestaoPessoaDomain extends BaseDomain {
 	public String toString() {
 		return "GestaoPessoaDomain [Nome=" + nome + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((dataCadastroSistema == null) ? 0 : dataCadastroSistema.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result
+				+ ((tipoCategoriaPessoaEnumeration == null) ? 0 : tipoCategoriaPessoaEnumeration.hashCode());
+		result = prime * result + ((tipoSituacaoEnumeration == null) ? 0 : tipoSituacaoEnumeration.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		GestaoPessoaDomain other = (GestaoPessoaDomain) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (dataCadastroSistema == null) {
+			if (other.dataCadastroSistema != null)
+				return false;
+		} else if (!dataCadastroSistema.equals(other.dataCadastroSistema))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (tipoCategoriaPessoaEnumeration != other.tipoCategoriaPessoaEnumeration)
+			return false;
+		if (tipoSituacaoEnumeration != other.tipoSituacaoEnumeration)
+			return false;
+		return true;
+	}
 	
 }
 	
