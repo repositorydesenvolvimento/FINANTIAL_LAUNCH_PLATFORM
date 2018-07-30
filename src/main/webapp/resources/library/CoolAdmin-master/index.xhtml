@@ -44,15 +44,7 @@
 
 <body class="animsition">
 
-<h:form prependId="false">
-
-		<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-			<span class="badge badge-pill badge-danger">Erro: </span>
-			<h:messages />
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
+<h:form prependId="false" class="form-header">
 
 		<div class="page-wrapper">
        
@@ -306,12 +298,10 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Pesquise por uma Funcionalidade da Plataforma" />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
-                            </form>
                             
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -984,12 +974,12 @@
                                                 </div>
                                             </div>
                                             <div class="au-chat-textfield">
-                                                <form class="au-form-icon">
+<!--                                                 <form class="au-form-icon"> -->
                                                     <input class="au-input au-input--full au-input--h65" type="text" placeholder="Type a message"/>
                                                     <button class="au-input-icon">
                                                         <i class="zmdi zmdi-camera"></i>
                                                     </button>
-                                                </form>
+<!--                                                 </form> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1033,7 +1023,6 @@
 							</button>
 						</div>
 					<div class="modal-body">
-						<form action="" method="post" novalidate="novalidate">
 
 							<div class="row form-group">
 								<div class="form-group col-md-6">
@@ -1132,7 +1121,6 @@
 					<div>
 						<h:commandButton action="#{gestaoDespesaController.persist()}" value="Cadastrar" class="btn btn-lg btn-info btn-block" styleClass="btn-primary" />
 					</div>
-					</form>
 				</div>
 				</div>
 				</div>
