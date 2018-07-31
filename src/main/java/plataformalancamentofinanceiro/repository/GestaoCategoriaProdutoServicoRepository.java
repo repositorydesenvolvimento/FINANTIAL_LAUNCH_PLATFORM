@@ -16,7 +16,7 @@ public class GestaoCategoriaProdutoServicoRepository extends BaseGenericDao {
 		StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append("SELECT gestaoCategoriaProdutoServicoDomain ");
 			stringBuilder.append("FROM GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain ");
-			stringBuilder.append("ORDER BY gestaoCategoriaProdutoServicoDomain.nome ASC ");
+			stringBuilder.append("ORDER BY gestaoCategoriaProdutoServicoDomain.descricao ASC ");
 		TypedQuery<GestaoCategoriaProdutoServicoDomain> typedQuery = getEntityManager().createQuery(stringBuilder.toString(), GestaoCategoriaProdutoServicoDomain.class);
 		return typedQuery.getResultList();
 	}

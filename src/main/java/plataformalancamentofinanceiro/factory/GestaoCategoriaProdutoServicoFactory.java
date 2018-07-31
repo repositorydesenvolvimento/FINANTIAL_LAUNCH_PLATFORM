@@ -13,25 +13,29 @@ public class GestaoCategoriaProdutoServicoFactory extends BaseFactory {
 	
 	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoTelefoniaInternetBandaLarga() {
 		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
-			gestaoCategoriaProdutoServicoDomain.setNome("Serviço de Telefônia e Internet Banda Larga 15MB");
+			gestaoCategoriaProdutoServicoDomain.setSigla("SERVTIBL");
+			gestaoCategoriaProdutoServicoDomain.setDescricao("Serviço de Telefônia e Internet Banda Larga");
 		return gestaoCategoriaProdutoServicoDomain;
 	}
 	
 	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoTelefoniaInternetMovel() {
 		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
-			gestaoCategoriaProdutoServicoDomain.setNome("Serviço de Telefônia Móvel e Internet Móvel");
+		gestaoCategoriaProdutoServicoDomain.setSigla("SERTMIM");
+			gestaoCategoriaProdutoServicoDomain.setDescricao("Serviço de Telefônia Móvel e Internet Móvel");
 		return gestaoCategoriaProdutoServicoDomain;
 	}
 	
 	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoDoacaoInstituicaoReligiosaJudaica() {
 		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
-			gestaoCategoriaProdutoServicoDomain.setNome("Doação para Instituicao Religiosa Judaica");
+		gestaoCategoriaProdutoServicoDomain.setSigla("DOIR");
+			gestaoCategoriaProdutoServicoDomain.setDescricao("Doação para Instituicao Religiosa Judaica");
 		return gestaoCategoriaProdutoServicoDomain;
 	}
 	
 	public static GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDevolucaoEmprestimos() {
 		GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain = new GestaoCategoriaProdutoServicoDomain();
-			gestaoCategoriaProdutoServicoDomain.setNome("Devolução de Empréstimos");
+			gestaoCategoriaProdutoServicoDomain.setSigla("DE");
+			gestaoCategoriaProdutoServicoDomain.setDescricao("Devolução de Empréstimos");
 		return gestaoCategoriaProdutoServicoDomain;
 	}
 	

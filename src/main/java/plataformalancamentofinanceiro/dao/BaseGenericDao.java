@@ -33,13 +33,20 @@ public class BaseGenericDao<T> implements Serializable {
 		return getEntityManager().find(object, codigo);
 	}
 	
-	public void persist(T object) {
+	/**
+	 * Responsavel por realizar o cadastramento dos dados no Banco de Dados.
+	 * @param object
+	 * @return
+	 */
+	public boolean persist(T object) {
 		try {
 			getBeginTransaction();
 				getEntityManager().persist(object);
 			getCommitTransaction();
+			return true;
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
+			return false;
 		}
 	}
 	
