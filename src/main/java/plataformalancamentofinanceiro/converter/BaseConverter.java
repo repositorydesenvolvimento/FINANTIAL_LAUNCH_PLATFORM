@@ -16,6 +16,13 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
 
+/**
+ * Essa classe nao deve ser mais usada ate que sejam realizados novos testes. 
+ * @author desenvolvimento
+ */
+
+// TODO EQUIPE_DESENVOLVIMENTO Implementar Testes para essa classe.
+@Deprecated
 @FacesConverter(value = "baseConverter")
 public class BaseConverter implements Converter, Serializable {
 
@@ -120,7 +127,7 @@ public class BaseConverter implements Converter, Serializable {
 	        } else if (value instanceof Object[]) {  
 	            Object[] array = (Object[]) value;  
 	            for (int i = 0; i < array.length; i++) {  
-	                // TODO test - this section is untested  
+	                // test - this section is untested  
 	                if (array[i] instanceof SelectItemGroup) {  
 	                    resolveAndAddItems((SelectItemGroup) array[i], items);  
 	                } else {  
@@ -144,7 +151,7 @@ public class BaseConverter implements Converter, Serializable {
 	                Object label = entry.getKey();  
 	                SelectItem item = new SelectItem(entry.getValue(),  
 	                        label == null ? (String) null : label.toString());  
-	                // TODO test - this section is untested  
+	                // test - this section is untested  
 	                if (item instanceof SelectItemGroup) {  
 	                    resolveAndAddItems((SelectItemGroup) item, items);  
 	                } else {  

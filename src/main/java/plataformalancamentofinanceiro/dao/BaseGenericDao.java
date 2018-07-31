@@ -72,7 +72,7 @@ public class BaseGenericDao<T> implements Serializable {
 		}
 	}
 	
-	// FIXME IMPLEMENTAR METODO ABSTRATO PARA RETORNAR UMA LISTA DE DADOS PARA UMA DETERMINADA ENTIDADE PARA UMA DETERMINADA PESQUISA.
+	// TODO IMPLEMENTAR METODO ABSTRATO PARA RETORNAR UMA LISTA DE DADOS PARA UMA DETERMINADA ENTIDADE PARA UMA DETERMINADA PESQUISA.
 	public List<T> findAll() {
 		return null;
 	}
@@ -89,7 +89,7 @@ public class BaseGenericDao<T> implements Serializable {
 	
 	public void getRollbackTransaction() {
 		entityManager.getTransaction().rollback();
-		// TODO TRATAR MENSAGENS DE ERRO NESSE PONTO
+		// TODO EQUIPE_DESENVOLVIMENTO TRATAR MENSAGENS DE ERRO NESSE PONTO
 	}
 	
 	public void getCloseEntityManager() {

@@ -10,6 +10,19 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+Exemplos de CATEGORIAS
+	Material de Escritório	MATE
+	Material de Cozinha	MATCOZ
+	Alimentos Básicos	ALIMB
+	Alimentos Supérfluos	ALIMS
+	Jogos Lotéricos	JOGLOT
+	Doação para Instituição Religiosa Judaica	DOAIRJ
+	Doação para Pessoa Física	DOAPF
+	Transporte Público	TRANSP
+	Produto de Tabacaria	TABC
+*/
+
 @Entity
 @Table(name = "TB_GESTAO_CATEGORIA_PRODUTO_SERVICO")
 public class GestaoCategoriaProdutoServicoDomain extends BaseDomain {
