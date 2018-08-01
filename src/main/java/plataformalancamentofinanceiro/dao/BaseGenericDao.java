@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import org.jboss.logging.Logger;
 
 import plataformalancamentofinanceiro.connection.EntityManagerConnection;
+import plataformalancamentofinanceiro.utility.MensagensSistemaUtility;
 
 /**
  * Responsavel por genrenciar, de forma generica, as operacoes de persistencia com o Banco de Dados.
@@ -45,7 +46,7 @@ public class BaseGenericDao<T> implements Serializable {
 			getCommitTransaction();
 			return true;
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			recuperarMensagemError(e);
 			return false;
 		}
 	}
@@ -89,7 +90,6 @@ public class BaseGenericDao<T> implements Serializable {
 	
 	public void getRollbackTransaction() {
 		entityManager.getTransaction().rollback();
-		// TODO EQUIPE_DESENVOLVIMENTO TRATAR MENSAGENS DE ERRO NESSE PONTO
 	}
 	
 	public void getCloseEntityManager() {
@@ -102,6 +102,11 @@ public class BaseGenericDao<T> implements Serializable {
 	
 	public void getFlushEntityManager() {
 		entityManager.flush();
+	}
+	
+	public void recuperarMensagemError(Exception e) {
+		getLogger().error(MensagensSistemaUtility.recuperarMensagemError(e));
+		MensagensSistemaUtility.getMensagemErro(MensagensSistemaUtility.recuperarMensagemError(e));
 	}
 	
 	public EntityManager getEntityManager() {
