@@ -6,40 +6,73 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <title>Plataforma de Lançamento Financeiro</title>
-</h:head> 
+      
+<ui:composition template="paginaTemplate.xhtml">
+	<ui:define name="titulo">Gestão de Categoria de Produtos e Serviços - Plataforma de Lançamento Financeiro</ui:define>
+	<ui:define name="conteudo">
 
-<body>
+		<h:form prependId="false" styleClass="margin-left: 10%; width: 80%;">
+			
+			<h:column rendered="#{gestaoCategoriaProdutoServicoController.isHabilitarExibicaoPainelMensagem == false}">
+				<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+					<h:messages class="active" />
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</h:column>
+			
+			<h:column rendered="#{gestaoCategoriaProdutoServicoController.isHabilitarExibicaoPainelMensagem == true}">
+				<div class="ufee-alert alert with-close alert-info alert-dismissible fade show">
+					<h:messages/>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</h:column>		
 
-	<h:form prependId="false">
-		
-		<h:messages />
-		
-		<h:panelGrid columns="3">
-			<h:outputLabel value="Sigla" />
-			<h:inputText id="sigla" 
-			             value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.sigla}" 
-			             required="true"
-			             requiredMessage="#{baseController.recuperarMensagemCampoObrigatorioView()}"/>
-			<h:message for="sigla" errorStyle="color:darkred;font-size:11px;" />
-			<h:outputLabel value="Descrição" />
-			<h:inputText id="descricao" 
-			             value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.descricao}" 
-			             required="true"
-			             requiredMessage="#{baseController.recuperarMensagemCampoObrigatorioView()}"/>
-			<h:message for="descricao" errorStyle="color:darkred;font-size:11px;" />
-			<h:outputLabel value="Data Cadastro" />
-			<h:inputText id="dataCadastro" value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.dataCadastro}">
-				<f:converter converterId="calendarConverter" />
-				<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
-			</h:inputText>
-			<h:message for="dataCadastro" errorStyle="color:darkred;font-size:11px;" />
-			<h:commandButton action="#{gestaoCategoriaProdutoServicoController.save()}" value="Cadastrar" />
-			<h:commandButton action="#{gestaoCategoriaProdutoServicoController.reset()}" value="Cancelar" />
-		</h:panelGrid>
-		
-	</h:form>
+			<div class="modal-header">
+				<h5 class="modal-title" id="scrollmodalLabel">Cadastro de Despesas Fixas</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"></span>
+				</button>
+			</div>
 
-</body>
+			<div class="row form-group">
+			 	<div class="form-group col-md-4">
+			 		<label for="cc-payment" class="control-label mb-1">Sigla</label>
+					<div>
+						<h:inputText id="sigla" value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.sigla}" required="true" requiredMessage="#{baseController.recuperarMensagemCampoObrigatorioView()}" class="form-control" />
+						<h:message for="sigla" errorStyle="color:darkred;font-size:11px;" />
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+			 		<label for="cc-payment" class="control-label mb-1">Descrição</label>
+					<div>
+						<h:inputText id="descricao" value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.descricao}" required="true" requiredMessage="#{baseController.recuperarMensagemCampoObrigatorioView()}" class="form-control" />
+						<h:message for="descricao" errorStyle="color:darkred;font-size:11px;" />	
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+			 		<label for="cc-payment" class="control-label mb-1">Data Cadastro</label>
+					<div>
+						<h:inputText id="dataCadastro" value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.dataCadastro}" class="form-control">
+							<f:converter converterId="calendarConverter" />
+							<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
+						</h:inputText>
+						<h:message for="dataCadastro" errorStyle="color:darkred;font-size:11px;" />
+					</div>
+				</div>
+			 </div>
+			 
+			 <div>
+			 	<h:commandButton action="#{gestaoCategoriaProdutoServicoController.save()}" value="Cadastrar" class="btn btn-lg btn-info btn-block" styleClass="btn-primary" />
+			 	<h:commandButton action="#{gestaoCategoriaProdutoServicoController.reset()}" value="Cancelar" immediate="true" class="btn btn-lg btn-danger btn-block" styleClass="btn-danger" />
+			 </div>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
 </html>

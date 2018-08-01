@@ -25,7 +25,8 @@ public class GestaoCategoriaProdutoServicoController extends BaseController {
 	}
 	
 	public String save() {
-		gestaoCategoriaProdutoServicoService.save(gestaoCategoriaProdutoServicoView.getGestaoCategoriaProdutoServicoDomain());
+		boolean isResultado = gestaoCategoriaProdutoServicoService.save(gestaoCategoriaProdutoServicoView.getGestaoCategoriaProdutoServicoDomain());
+		setIsHabilitarExibicaoPainelMensagem(isResultado);
 		reset();
 		return "";
 	}

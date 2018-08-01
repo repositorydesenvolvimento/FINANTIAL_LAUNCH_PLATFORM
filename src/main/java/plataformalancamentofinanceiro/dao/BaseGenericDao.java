@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import org.jboss.logging.Logger;
 
 import plataformalancamentofinanceiro.connection.EntityManagerConnection;
+import plataformalancamentofinanceiro.utility.ConstantantesUtility;
 import plataformalancamentofinanceiro.utility.MensagensSistemaUtility;
 
 /**
@@ -44,6 +45,7 @@ public class BaseGenericDao<T> implements Serializable {
 			getBeginTransaction();
 				getEntityManager().persist(object);
 			getCommitTransaction();
+			recuperarMensagemSucesso();
 			return true;
 		}catch(Exception e) {
 			recuperarMensagemError(e);
@@ -102,6 +104,10 @@ public class BaseGenericDao<T> implements Serializable {
 	
 	public void getFlushEntityManager() {
 		entityManager.flush();
+	}
+	
+	public void recuperarMensagemSucesso() {
+		MensagensSistemaUtility.getMensagemInformacao(ConstantantesUtility.MESSAGE_VIEW_SUCESSO);
 	}
 	
 	public void recuperarMensagemError(Exception e) {

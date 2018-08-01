@@ -20,11 +20,13 @@ public class GestaoCategoriaProdutoServicoService extends BaseService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void save(GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain) {
+	public boolean save(GestaoCategoriaProdutoServicoDomain gestaoCategoriaProdutoServicoDomain) {
 		if(gestaoCategoriaProdutoServicoRepository.persist(gestaoCategoriaProdutoServicoDomain)) {
 			getLogger().info("[MENSAGEM_SUCESSO] Dados cadastrados com Sucesso!");
+			return true;
 		} else {
 			getLogger().error("[MENSAGEM_ERROR] Erro ao tentar cadastrar os dados!");
+			return false;
 		}
 	}
 	

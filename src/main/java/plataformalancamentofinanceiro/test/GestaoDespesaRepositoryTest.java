@@ -1,11 +1,15 @@
 package plataformalancamentofinanceiro.test;
 
+import org.jboss.logging.Logger;
+
 import plataformalancamentofinanceiro.dao.BaseGenericDao;
 import plataformalancamentofinanceiro.domain.GestaoDespesaDomain;
 import plataformalancamentofinanceiro.factory.GestaoDespesaFactory;
 import plataformalancamentofinanceiro.repository.GestaoDespesaRepository;
 
 public class GestaoDespesaRepositoryTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(GestaoDespesaRepositoryTest.class);
 	
 	public static void main(String[] args) {
 		save();
@@ -20,11 +24,15 @@ public class GestaoDespesaRepositoryTest {
 	public static void findAll() {
 		GestaoDespesaRepository gestaoDespesaRepository = new GestaoDespesaRepository();
 			for(GestaoDespesaDomain gestaoDespesaDomainResult : gestaoDespesaRepository.findAll()) {
-				System.out.println("Parcela: " + gestaoDespesaDomainResult.getNumeroParcela());
-				System.out.println("Favorecido: " + gestaoDespesaDomainResult.getGestaoPessoaDomain().getNome());
-				System.out.println("Valor: " + gestaoDespesaDomainResult.getValorPrevisto());
-				System.out.println("Situação: " + gestaoDespesaDomainResult.getTipoSituacaoPagamentoEnumeration());
+				getLogger().debug("Parcela: " + gestaoDespesaDomainResult.getNumeroParcela());
+				getLogger().debug("Favorecido: " + gestaoDespesaDomainResult.getGestaoPessoaDomain().getNome());
+				getLogger().debug("Valor: " + gestaoDespesaDomainResult.getValorPrevisto());
+				getLogger().debug("Situação: " + gestaoDespesaDomainResult.getTipoSituacaoPagamentoEnumeration());
 			}
+	}
+
+	public static Logger getLogger() {
+		return LOGGER;
 	}
 	
 }

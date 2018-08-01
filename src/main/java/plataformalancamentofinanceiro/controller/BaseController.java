@@ -25,11 +25,14 @@ public class BaseController implements Serializable {
 	
 	private BaseService baseService;
 	
+	private boolean isHabilitarExibicaoPainelMensagem;
+	
 	public BaseController() {
 		this.baseService = new BaseService();
 		this.baseView = new BaseView();
 		this.baseView.setGestaoCategoriaProdutoServicoDomainList(baseService.getGestaoCategoriaProdutoServicoRepository().findAll());
 		this.baseView.setGestaoProdutoServicoDomainList(baseService.getGestaoProdutoServicoRepository().findAll());
+		this.isHabilitarExibicaoPainelMensagem = false;
 	}
 	
 	public String recuperarValorSelectView() {
@@ -78,6 +81,14 @@ public class BaseController implements Serializable {
 
 	public void setBaseService(BaseService baseService) {
 		this.baseService = baseService;
+	}
+
+	public boolean getIsHabilitarExibicaoPainelMensagem() {
+		return isHabilitarExibicaoPainelMensagem;
+	}
+
+	public void setIsHabilitarExibicaoPainelMensagem(boolean isHabilitarExibicaoPainelMensagem) {
+		this.isHabilitarExibicaoPainelMensagem = isHabilitarExibicaoPainelMensagem;
 	}
 	
 }
