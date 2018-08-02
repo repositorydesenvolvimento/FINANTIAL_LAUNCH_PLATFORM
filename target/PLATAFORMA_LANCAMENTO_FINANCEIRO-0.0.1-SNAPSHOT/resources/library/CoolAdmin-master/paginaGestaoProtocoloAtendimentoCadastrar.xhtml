@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Plataforma de Lançamento Financeiro</title>
+</h:head> 
+
+<body>
+
+	<h:form prependId="false">
+		
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Sigla" />
+			<h:inputText id="sigla" 
+			             value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.sigla}" 
+			             required="true"
+			             requiredMessage="#{baseController.recuperarMensagemCampoObrigatorioView()}"/>
+			<h:message for="sigla" errorStyle="color:darkred;font-size:11px;" />
+			<h:outputLabel value="Descrição" />
+			<h:inputText id="descricao" 
+			             value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.descricao}" 
+			             required="true"
+			             requiredMessage="#{baseController.recuperarMensagemCampoObrigatorioView()}"/>
+			<h:message for="descricao" errorStyle="color:darkred;font-size:11px;" />
+			<h:outputLabel value="Data Cadastro" />
+			<h:inputText id="dataCadastro" value="#{gestaoCategoriaProdutoServicoController.gestaoCategoriaProdutoServicoView.gestaoCategoriaProdutoServicoDomain.dataCadastro}">
+				<f:converter converterId="calendarConverter" />
+				<f:convertDateTime pattern="dd/MM/yyy" timeZone="American/Sao_Paulo" />
+			</h:inputText>
+			<h:message for="dataCadastro" errorStyle="color:darkred;font-size:11px;" />
+			<h:commandButton action="#{gestaoCategoriaProdutoServicoController.save()}" value="Cadastrar" />
+			<h:commandButton action="#{gestaoCategoriaProdutoServicoController.reset()}" value="Cancelar" />
+		</h:panelGrid>
+		
+	</h:form>
+
+</body>
+</html>

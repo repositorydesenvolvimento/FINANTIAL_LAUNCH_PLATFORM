@@ -1054,7 +1054,7 @@
                                     <div>
                                         <h:selectOneMenu id="categoriaProdutoServico" value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomain.codigo}" required="true" class="form-control">
                                             <f:selectItem itemValue="#{baseController.recuperarValorSelectView()}" noSelectionOption="true" />
-                                            <f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado.codigo}" itemLabel="#{gestaoCategoriaProdutoResultado.nome}" />
+                                            <f:selectItems value="#{baseController.baseView.gestaoCategoriaProdutoServicoDomainList}" var="gestaoCategoriaProdutoResultado" itemValue="#{gestaoCategoriaProdutoResultado.codigo}" itemLabel="#{gestaoCategoriaProdutoResultado.descricao}" />
                                         </h:selectOneMenu>
                                     </div>
                                     <h:message for="categoriaProdutoServico" errorStyle="color:darkred;font-size:11px;" />

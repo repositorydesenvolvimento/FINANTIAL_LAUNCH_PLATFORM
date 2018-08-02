@@ -1,6 +1,7 @@
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/test/GestaoCategoriaProdutoServicoRepositoryTest.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/enumeration/TipoDocumentoEnumeration.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/service/GestaoPessoaService.java
+/home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/enumeration/TipoProtocoloAtendimentoEnumeration.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/connection/EntityManagerConnection.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/controller/GestaoCategoriaProdutoServicoController.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/view/GestaoCategoriaProdutoServicoView.java
@@ -8,8 +9,8 @@
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/enumeration/TipoCategoriaPessoaEnumeration.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/controller/GestaoPessoaController.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/utility/DateUtility.java
+/home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/utility/MensagensSistemaUtility.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/converter/BaseConverter.java
-/home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/domain/GestaoProtocoloDomain.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/enumeration/TipoSituacaoPagamentoEnumeration.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/view/GestaoPessoaView.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/converter/CalendarConverter.java
@@ -40,6 +41,7 @@
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/test/EntityManagerConnectionTest.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/controller/GestaoDespesasController.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/converter/GestaoPessoaDomainConverter.java
+/home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/domain/GestaoProtocoloAtendimentoDomain.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/domain/GestaoProdutoServicoDomain.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/enumeration/TipoFormaPagamentoEnumeration.java
 /home/desenvolvimento/Desenvolvimento/VAV/vav_GIT/FINANTIAL_LAUNCH_PLATFORM/src/main/java/plataformalancamentofinanceiro/repository/GestaoPessoaRepository.java
