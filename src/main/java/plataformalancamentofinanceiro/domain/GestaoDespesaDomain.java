@@ -140,8 +140,7 @@ public class GestaoDespesaDomain extends BaseDomain {
 	private GestaoProdutoServicoDomain gestaoProdutoServicoDomain;
 	
 	/**
-	 * Refere-se ao Favorecido, ou seja, a empresa em que e realizado uma
-	 * determinada compra.
+	 * Refere-se a categoria de um determinado produto.
 	 */
 	@OneToOne
 	@JoinColumn(name = "ID_CATEGORIA_PRODUTO", referencedColumnName = "CODIGO", nullable = false)
