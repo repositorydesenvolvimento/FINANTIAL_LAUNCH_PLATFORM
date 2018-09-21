@@ -1,8 +1,10 @@
 package plataformalancamentofinanceiro.enumeration;
 
 public enum TipoPeriodoEnumeration {
-	DIARIO,
+	DIARIA,
 	ANUAL,
 	MENSAL,
-	QUIZENAL;
+	QUIZENAL,
+	EVENTUAL,
+	UNICA;
 }
